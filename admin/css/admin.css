@@ -1027,6 +1027,42 @@ input:focus, select:focus, textarea:focus {
   justify-content: space-between;
 }
 
+
+.reports-cards-grid {
+  margin-top: 1.25rem;
+}
+
+.report-upload-card {
+  min-width: 0;
+}
+
+.report-upload-status,
+.report-upload-description,
+.report-upload-hint {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.report-upload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.report-upload-actions .btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.report-upload-hint {
+  font-size: 0.7rem;
+}
+
+
 /* --------------------------------------------------------------------------
    10. Homepage Editor Layout (Live Preview & Form)
    -------------------------------------------------------------------------- */

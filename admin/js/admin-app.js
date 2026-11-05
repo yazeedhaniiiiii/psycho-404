@@ -369,37 +369,74 @@ class AdminApp {
   // Section 4: Reports Render (9 Independent Slots Matching course-data.js)
   // ------------------------------------------------------------------------
   renderReports() {
-    const tbody = document.getElementById('reportsTableTbody');
-    if (!tbody) return;
+    const grid = document.getElementById('reportsCardsGrid');
+    if (!grid) return;
 
-    tbody.innerHTML = this.data.reports.map((rep, idx) => {
-      const isEmpty = !rep.url || rep.url.trim() === '';
+    grid.innerHTML = this.data.reports.map((rep, idx) => {
+      const hasReport = Boolean(rep.url && rep.url.trim());
+      const status = hasReport
+        ? '<span class="badge badge-success"><span class="badge-dot"></span> Report available</span>'
+        : '<span class="badge badge-empty">No HTML uploaded yet</span>';
+      const currentLink = hasReport
+        ? `<a href="${this.escapeHtml(rep.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open current report</a>`
+        : '';
 
       return `
-        <tr>
-          <td><span class="lecture-num-pill">${rep.number}</span></td>
-          <td><strong style="color:var(--text-primary);">${rep.lectureTitle}</strong></td>
-          <td><span class="badge badge-primary">${rep.badge}</span></td>
-          <td>
-            ${isEmpty 
-              ? `<span class="badge badge-empty">Empty / Not Added</span>` 
-              : `<span class="badge badge-success"><span class="badge-dot"></span> Active</span>`
-            }
-          </td>
-          <td style="font-family:var(--font-family-mono); font-size:0.78rem; max-width:320px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-            ${!isEmpty 
-              ? `<a href="${rep.url}" target="_blank" style="color:var(--accent-secondary); text-decoration:none;">${rep.url}</a>`
-              : `<span style="color:var(--text-muted); font-style:italic;">[Reports placeholder – No link added yet]</span>`
-            }
-          </td>
-          <td>
-            <button class="btn btn-secondary btn-sm" onclick="adminApp.openEditReportModal(${idx})">
-              ${isEmpty ? '+ Add Report Link' : 'Edit Link'}
-            </button>
-          </td>
-        </tr>
+        <article class="media-item-card report-upload-card">
+          <div class="media-item-details">
+            <span class="badge badge-primary">Lecture ${this.escapeHtml(rep.number)}</span>
+            <h3 class="media-file-name">${this.escapeHtml(rep.lectureTitle)}</h3>
+            <p class="report-upload-status">${status}</p>
+            ${rep.description ? `<p class="report-upload-description">${this.escapeHtml(rep.description)}</p>` : ''}
+            <input type="file" id="reportFile-${idx}" accept=".html,text/html" hidden onchange="adminApp.uploadReport(${idx}, this.files && this.files[0])">
+            <div class="report-upload-actions">
+              ${currentLink}
+              <button class="btn btn-primary btn-sm" type="button" onclick="document.getElementById('reportFile-${idx}').click()">
+                ${hasReport ? 'Replace HTML' : 'Choose HTML file'}
+              </button>
+            </div>
+            <p class="report-upload-hint">HTML only · Up to 10 MB · Opens from the student site</p>
+          </div>
+        </article>
       `;
     }).join('');
+  }
+
+  async uploadReport(index, file) {
+    if (!file) return;
+    const rep = this.data.reports[index];
+    if (!rep) return;
+    if (!/\.html?$/i.test(file.name) || (file.type && file.type !== 'text/html')) {
+      alert('Please choose an .html or .htm file.');
+      this.renderReports();
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      alert('The HTML file must be 10 MB or smaller.');
+      this.renderReports();
+      return;
+    }
+
+    const grid = document.getElementById('reportsCardsGrid');
+    const button = grid?.querySelector(`#reportFile-${index}`)?.parentElement?.querySelector('button.btn-primary');
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Uploading…';
+    }
+
+    try {
+      const url = await window.PSYCHO404_DB.uploadLectureReport(file, rep.number, rep.lectureTitle);
+      rep.url = url;
+      rep.description = `HTML report for ${rep.lectureTitle}`;
+      rep.status = 'published';
+      await window.PSYCHO404_DB.saveCategoryItem(rep, 'cat-reports');
+      this.renderReports();
+      this.showToast(`HTML report for Lecture ${rep.number} is ready on the student site.`);
+    } catch (error) {
+      console.error('Report upload failed:', error);
+      alert(error?.message || 'Could not upload this report. Please try again.');
+      this.renderReports();
+    }
   }
 
   openEditReportModal(index) {

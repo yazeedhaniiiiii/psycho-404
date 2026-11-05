@@ -202,6 +202,25 @@
     if (result.error) throw result.error;
   }
 
+  async function uploadLectureReport(file, lectureNumber, lectureTitle) {
+    const number = String(lectureNumber).padStart(2, "0");
+    const slug = String(lectureTitle || "lecture")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "lecture";
+    const path = `${number}/${slug}.html`;
+    const result = await client.storage.from("lecture-reports").upload(path, file, {
+      contentType: "text/html",
+      cacheControl: "0",
+      upsert: true
+    });
+    if (result.error) throw result.error;
+    const publicResult = client.storage.from("lecture-reports").getPublicUrl(path);
+    return `${publicResult.data.publicUrl}?v=${Date.now()}`;
+  }
+
   async function saveFreePart(part, index) {
     const thumbnail = (part.thumbnail || "").startsWith("../") ? part.thumbnail.slice(3) : (part.thumbnail || "");
     const result = await client.from("free_lecture_parts").upsert({
@@ -257,7 +276,7 @@
 
   window.PSYCHO404_DB = {
     client, loadCourseData, loadAdminData, saveLecture,
-    saveCategoryItem, saveFreePart, saveProfile,
+    saveCategoryItem, uploadLectureReport, saveFreePart, saveProfile,
     async signInAdmin(email, password) {
       const result = await client.auth.signInWithPassword({ email, password });
       if (result.error) return { error: result.error.message };

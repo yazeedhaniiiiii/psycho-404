@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PSYCHO 404 &mdash; Minimal Interactive Course Website</title>
+  
+  <!-- Meta SEO & Open Graph -->
+  <meta name="description" content="PSYCHO 404 &mdash; A modern, minimal, elegant, and interactive psychology course platform by Yazeed Hani.">
+  <meta name="theme-color" content="#101827">
+
+  <!-- Google Fonts Preconnect & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Abstract Wavy Canvas Background Layer -->
+  <canvas id="wavy-canvas" aria-hidden="true"></canvas>
+  <div class="bg-pattern-overlay" aria-hidden="true"></div>
+
+  <!-- Top Sticky Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="PSYCHO 404 Homepage">
+        <div class="brand-symbol">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-4.54Z"/>
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-4.54Z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="course-name">PSYCHO 404</span>
+          <span class="course-badge">EDU</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" id="header-nav" aria-label="Main Navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#free-lectures" class="nav-link">Free Lectures</a>
+        <a href="#course-lectures" class="nav-link">Lectures</a>
+      </nav>
+
+      <!-- Header Status Actions -->
+      <div class="header-actions">
+        <div class="btn-instructor-badge">
+          <span class="pulse-dot"></span>
+          <span>Yazeed Hani</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 2: Personal Introduction – Hero Section -->
+    <section class="hero-section" id="about">
+      <div class="container">
+        <div class="hero-card">
+          
+          <!-- Instructor Profile Photo Beside Introduction -->
+          <div class="hero-photo-wrapper">
+            <div class="photo-backdrop-glow"></div>
+            <div class="hero-photo-inner">
+              <img 
+                src="profile.jpg" 
+                alt="Yazeed Hani - Psychology Instructor, Photographer, Video Editor" 
+                class="hero-photo-img"
+                id="hero-photo-img"
+                loading="eager"
+                decoding="async"
+                onerror="if (!this.dataset.fallback) { this.dataset.fallback = '1'; this.src = 'profile.jpg.JPG'; }"
+              >
+            </div>
+          </div>
+
+          <!-- Hero Information Content -->
+          <div class="hero-content">
+            <div class="hero-badge-row">
+              <span class="hero-category-label">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <span id="hero-role-badge">Course Instructor &amp; Creator</span>
+              </span>
+            </div>
+
+            <!-- Exact Name -->
+            <h1 class="hero-title" id="hero-instructor-name">Yazeed Hani</h1>
+
+            <!-- Exact Bio Paragraphs -->
+            <div class="hero-bio">
+              <p id="hero-instructor-bio-1">I'm a Psychology Instructor, Photographer, and Video Editor with 3 years of experience teaching Psychology.</p>
+              <p id="hero-instructor-bio-2">I combine my passion for psychology, visual creativity, and teaching to make complex concepts easier to understand and more engaging to learn.</p>
+            </div>
+
+            <!-- Exact Badges / Tags -->
+            <div class="hero-tags" id="hero-instructor-tags">
+              <span class="hero-tag">Teaching</span>
+              <span class="hero-tag-divider">•</span>
+              <span class="hero-tag">Photography</span>
+              <span class="hero-tag-divider">•</span>
+              <span class="hero-tag">Video Editing</span>
+            </div>
+
+            <!-- Action Links -->
+            <div class="hero-actions">
+              <a href="#course-lectures" class="btn-primary">
+                <span>View 9 Course Modules</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#free-lectures" class="btn-secondary">
+                <span>Free Open Lectures</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Main Navigation Icons (4 Categories) -->
+    <section class="section-wrapper" id="categories">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-label">Quick Hub</span>
+            <h2 class="section-title">Resource Categories</h2>
+            <p class="section-subtitle">Select a category below to highlight relevant course materials and visual study resources.</p>
+          </div>
+        </div>
+
+        <!-- 4 Categories Grid -->
+        <div class="nav-categories-grid" id="nav-categories-container">
+          <!-- Populated dynamically via js/app.js -->
+        </div>
+
+        <!-- Expandable Category Content Panel -->
+        <div class="category-expanded-panel" id="category-expanded-panel">
+          <div class="cat-panel-inner">
+            <div class="cat-panel-header">
+              <div class="cat-panel-title-group">
+                <div class="cat-panel-icon" id="cat-panel-icon"></div>
+                <div>
+                  <span class="cat-panel-tag" id="cat-panel-badge">Category</span>
+                  <h3 class="cat-panel-title" id="cat-panel-title">Category Name</h3>
+                </div>
+              </div>
+              <button class="cat-panel-close" id="cat-panel-close-btn" aria-label="Close category panel">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Items Grid Inside This Category -->
+            <div class="cat-panel-items-grid" id="cat-panel-items-grid">
+              <!-- Rendered dynamically via js/app.js -->
+            </div>
+
+            <div class="cat-panel-footer">
+              <button class="btn-clear-filter" id="btn-collapse-cat-panel">Close Panel</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Free Lectures -->
+    <section class="section-wrapper" id="free-lectures">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-label">Open Access</span>
+            <h2 class="section-title">Free Lectures</h2>
+            <p class="section-subtitle">Featured complimentary video sessions to preview core conceptual breakdowns.</p>
+          </div>
+        </div>
+
+        <div class="free-lecture-banner">
+          <div class="free-lecture-headline">
+            <div class="headline-content">
+              <span class="lecture-topic-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+                Featured Lecture
+              </span>
+              <h3 class="free-lecture-title" id="free-lecture-headline-title">Biological Bases of Behaviour</h3>
+            </div>
+            <div class="badge-three-parts">
+              <span class="course-badge">3 Video Parts</span>
+            </div>
+          </div>
+
+          <!-- 3 Video Parts Container -->
+          <div class="free-parts-grid" id="free-parts-container">
+            <!-- Populated dynamically via js/app.js: Part 1, Part 2, Part 3 -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Course Lectures (9 Accordions with 7 Resources Each) -->
+    <section class="section-wrapper" id="course-lectures">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-label">Curriculum Index</span>
+            <h2 class="section-title">Lectures</h2>
+            <p class="section-subtitle">Nine comprehensive modules. Click any lecture to expand and explore all seven interactive resource materials.</p>
+          </div>
+        </div>
+
+        <!-- Controls Bar: Search & Accordion Controls -->
+        <div class="course-controls-bar">
+          <div class="lecture-search-wrapper">
+            <span class="search-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              class="lecture-search-input" 
+              id="lecture-search-input" 
+              placeholder="Search lecture modules..." 
+              aria-label="Filter course lectures"
+            >
+          </div>
+
+          <div class="accordion-control-buttons">
+            <button class="btn-control" id="btn-expand-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 11 12 6 17 11"></polyline>
+                <polyline points="7 18 12 13 17 18"></polyline>
+              </svg>
+              <span>Expand All</span>
+            </button>
+            <button class="btn-control" id="btn-collapse-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 13 12 18 17 13"></polyline>
+                <polyline points="7 6 12 11 17 6"></polyline>
+              </svg>
+              <span>Collapse All</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 9 Expandable Accordions -->
+        <div class="lectures-accordion-list" id="lectures-accordion-list">
+          <!-- Populated dynamically via js/app.js with 9 lectures & 7 resources each -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Resource Placeholder Modal -->
+  <div class="modal-overlay" id="resource-modal" role="dialog" aria-modal="true" aria-labelledby="modal-resource-name">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-icon-badge" id="modal-icon-container">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div class="modal-title-group">
+          <span class="modal-subtitle" id="modal-lecture-name">Lecture Name</span>
+          <h3 class="modal-title" id="modal-resource-name">Resource Name</h3>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-notice-box" id="modal-notice-box">
+          <strong id="modal-notice-title">Editable Resource Placeholder</strong><br>
+          <span id="modal-notice-desc">This resource slot has not been configured yet. The course administrator can add its link in the admin dashboard.</span>
+        </div>
+
+        <div class="modal-field" id="modal-single-field">
+          <label class="modal-label" for="modal-placeholder-input">Current Destination / Placeholder URL</label>
+          <div class="modal-input-group">
+            <input 
+              type="text" 
+              class="modal-input" 
+              id="modal-placeholder-input" 
+              readonly 
+              value="[Editable Placeholder]"
+            >
+            <button class="btn-copy" id="btn-copy-placeholder">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Multi-links container when resource has multiple links -->
+        <div class="modal-multi-field" id="modal-multi-field" style="display: none;">
+          <label class="modal-label">Available Study Decks & Links</label>
+          <div class="modal-multi-links-list" id="modal-multi-links-list"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary btn-close-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Free Lecture Video Placeholder Modal -->
+  <div class="modal-overlay" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-part-title">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-icon-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </div>
+        <div class="modal-title-group">
+          <span class="modal-subtitle">Free Lecture Video</span>
+          <h3 class="modal-title" id="video-modal-part-title">Part Title</h3>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="video-thumb-frame" style="height: 220px; aspect-ratio: auto; margin-bottom: 0.5rem;">
+          <img src="free-lecture-thumb.jpg" alt="Cover" class="video-thumb-img">
+          <div class="video-thumb-overlay"></div>
+          <div class="play-trigger-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span class="duration-tag">Telegram Video</span>
+        </div>
+
+        <div class="modal-notice-box">
+          <strong>Video URL & Embed Placeholder</strong><br>
+          This video slot has not been configured yet. The course administrator can add its link in the admin dashboard.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary btn-close-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-brand">PSYCHO 404</span>
+        <span class="footer-sub">Interactive Psychology Course & Portfolio • Yazeed Hani</span>
+      </div>
+      <div class="footer-right">
+        <span>Teaching | Photography | Video Editing</span>
+        <a href="#about" class="footer-link">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/course-data.js"></script>
+  <script>window.PSYCHO404_RECOVERY_FLOW = window.location.hash.includes('type=recovery');</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/password-recovery.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

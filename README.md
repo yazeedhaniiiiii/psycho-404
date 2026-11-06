@@ -34,6 +34,8 @@ PSYCHO 404/
 ├── index.html                  # Public website
 ├── admin/login.html            # Admin sign-in
 ├── admin/index.html            # Admin dashboard
+├── assets/reader.html          # Universal interactive lecture report reader
+├── assets/reports/             # Interactive lecture HTML files
 ├── css/                        # Public site styles
 ├── js/supabase-client.js       # Supabase data and authentication adapter
 ├── js/course-data.js           # Bundled fallback content

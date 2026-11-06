@@ -111,6 +111,11 @@
     const pwdInput = document.getElementById('adminPassword');
     const message = document.getElementById('loginMessage');
     const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+
+    if (window.location.search.includes('password-reset=success')) {
+      message.textContent = 'تم تعيين كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول.';
+      message.style.color = '#38bdf8';
+    }
     toggleBtn.addEventListener('click', () => {
       const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
       pwdInput.setAttribute('type', type);

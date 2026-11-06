@@ -220,6 +220,14 @@
   function openDestinationUrl(url, title = 'PSYCHO 404') {
     if (!url || !url.trim()) return;
     const clean = url.trim();
+
+    // 1. If the URL is ALREADY a reader link (contains reader.html), open it directly without re-wrapping!
+    if (clean.includes('reader.html')) {
+      window.open(clean, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    // 2. If it's an interactive HTML report/file, route it through the universal reader
     const isHtmlReport = /\.html?(\?.*)?$/i.test(clean) || clean.includes('/lecture-reports/');
     if (isHtmlReport) {
       const readerUrl = `assets/reader.html?src=${encodeURIComponent(clean)}&title=${encodeURIComponent(title || 'تقرير المحاضرة')}`;

@@ -228,6 +228,22 @@
         return;
       }
 
+      // Automatically un-nest if an existing reader URL was passed into the src parameter
+      if (src.includes('reader.html') && src.includes('src=')) {
+        try {
+          const innerUrl = new URL(src, window.location.href);
+          const innerSrc = innerUrl.searchParams.get('src');
+          if (innerSrc) {
+            src = innerSrc;
+          }
+        } catch (e) {
+          const match = src.match(/[?&]src=([^&]+)/);
+          if (match && match[1]) {
+            src = decodeURIComponent(match[1]);
+          }
+        }
+      }
+
       // Repair localhost URLs if opened on a mobile device or other host
       if (src.includes('localhost:3000') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
         src = src.replace('http://localhost:3000', 'https://yazeedhaniiiiii.github.io/psycho-404');

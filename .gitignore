@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 _site/
+_backup_original_assets/
 node_modules/
 Thumbs.db
 .DS_Store

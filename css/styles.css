@@ -115,6 +115,8 @@ img, svg, video, canvas {
   z-index: -2;
   pointer-events: none;
   opacity: 0.85;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .bg-pattern-overlay {
@@ -2428,6 +2430,16 @@ button {
 @media (max-width: 768px) {
   :root {
     --nav-height: 64px;
+  }
+
+  /* Mobile performance optimization for GPU blur compositing */
+  .hero-card,
+  .nav-cat-card,
+  .lecture-card,
+  .cat-expanded-panel,
+  .free-lecture-banner {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .container {

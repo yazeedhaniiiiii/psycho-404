@@ -377,8 +377,14 @@ class AdminApp {
       const status = hasReport
         ? '<span class="badge badge-success"><span class="badge-dot"></span> Report available</span>'
         : '<span class="badge badge-empty">No HTML uploaded yet</span>';
+      const isHtml = hasReport && (/\.html?(\?.*)?$/i.test(rep.url) || rep.url.includes('/lecture-reports/'));
+      const reportTargetUrl = hasReport
+        ? (isHtml
+            ? `../assets/reader.html?src=${encodeURIComponent(rep.url)}&title=${encodeURIComponent(rep.lectureTitle)}`
+            : (rep.url.startsWith('http') || rep.url.startsWith('/') || rep.url.startsWith('../') ? rep.url : '../' + rep.url))
+        : '';
       const currentLink = hasReport
-        ? `<a href="${this.escapeHtml(rep.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open current report</a>`
+        ? `<a href="${this.escapeHtml(reportTargetUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open current report</a>`
         : '';
 
       return `

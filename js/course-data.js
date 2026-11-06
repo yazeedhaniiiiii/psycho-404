@@ -71,7 +71,7 @@ const COURSE_DATA = {
       icon: "reports",
       badge: "By Doctors words",
       items: [
-        { number: "01", title: "BIOLOGICAL BASES OF BEHAVIOUR", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
+        { number: "01", title: "BIOLOGICAL BASES OF BEHAVIOUR", description: "تقرير المحاضرة التفاعلي الشامل بالعامية المصرية", type: "reports", url: "assets/reports/01-biological-bases-of-behaviour.html" },
         { number: "02", title: "Developmental Psychology", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
         { number: "03", title: "Emotions", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
         { number: "04", title: "Motivation", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },

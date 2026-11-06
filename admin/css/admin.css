@@ -1027,7 +1027,6 @@ input:focus, select:focus, textarea:focus {
   justify-content: space-between;
 }
 
-
 .reports-cards-grid {
   margin-top: 1.25rem;
 }
@@ -1061,7 +1060,6 @@ input:focus, select:focus, textarea:focus {
 .report-upload-hint {
   font-size: 0.7rem;
 }
-
 
 /* --------------------------------------------------------------------------
    10. Homepage Editor Layout (Live Preview & Form)

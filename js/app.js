@@ -45,7 +45,7 @@
     const canvas = document.getElementById('wavy-canvas');
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
@@ -53,16 +53,48 @@
     let mouseY = height / 2;
     let targetMouseX = mouseX;
     let targetMouseY = mouseY;
+    let isAnimating = true;
+    let animationFrameId = null;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    });
+      if (!isAnimating && !prefersReducedMotion) {
+        renderFrame();
+      }
+    }, { passive: true });
 
     window.addEventListener('mousemove', (e) => {
       targetMouseX = e.clientX;
       targetMouseY = e.clientY;
+    }, { passive: true });
+
+    // Pause animation when tab is inactive to save battery and GPU
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAnimation();
+      } else if (window.scrollY < 1200 && !prefersReducedMotion) {
+        startAnimation();
+      }
     });
+
+    // Pause animation when user scrolls deep into course lectures
+    let scrollCheckTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollCheckTicking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 1200) {
+            stopAnimation();
+          } else if (!isAnimating && !document.hidden && !prefersReducedMotion) {
+            startAnimation();
+          }
+          scrollCheckTicking = false;
+        });
+        scrollCheckTicking = true;
+      }
+    }, { passive: true });
 
     // Wave parameters (harmonic smooth curves with Dark Navy / subtle cyan tones)
     const waves = [
@@ -103,12 +135,10 @@
 
     let time = 0;
 
-    function render() {
+    function renderFrame() {
       // Smooth mouse easing
       mouseX += (targetMouseX - mouseX) * 0.03;
       mouseY += (targetMouseY - mouseY) * 0.03;
-
-      ctx.clearRect(0, 0, width, height);
 
       // Base background fill
       ctx.fillStyle = '#101827';
@@ -116,6 +146,7 @@
 
       const mouseInfluenceX = (mouseX / width - 0.5) * 40;
       const mouseInfluenceY = (mouseY / height - 0.5) * 30;
+      const step = width < 768 ? 14 : 10;
 
       // Draw each wave layer
       waves.forEach((w) => {
@@ -124,7 +155,6 @@
         ctx.moveTo(0, height);
         ctx.lineTo(0, baseY);
 
-        const step = 8;
         for (let x = 0; x <= width + step; x += step) {
           const distanceFactor = Math.sin((x + mouseInfluenceX) * w.wavelength + time * w.speed + w.offset);
           const y = baseY + distanceFactor * w.amplitude;
@@ -153,12 +183,50 @@
         ctx.lineWidth = w.lineWidth;
         ctx.stroke();
       });
-
-      time += 16;
-      requestAnimationFrame(render);
     }
 
-    render();
+    function animate() {
+      if (!isAnimating) return;
+      renderFrame();
+      time += 16;
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function startAnimation() {
+      if (isAnimating || prefersReducedMotion) return;
+      isAnimating = true;
+      animate();
+    }
+
+    function stopAnimation() {
+      if (!isAnimating) return;
+      isAnimating = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }
+
+    if (prefersReducedMotion) {
+      renderFrame();
+    } else {
+      animate();
+    }
+  }
+
+  // ==========================================================================
+  // Helper: Open Destination URLs (with universal reader for interactive HTML reports)
+  // ==========================================================================
+  function openDestinationUrl(url, title = 'PSYCHO 404') {
+    if (!url || !url.trim()) return;
+    const clean = url.trim();
+    const isHtmlReport = /\.html?(\?.*)?$/i.test(clean) || clean.includes('/lecture-reports/');
+    if (isHtmlReport) {
+      const readerUrl = `assets/reader.html?src=${encodeURIComponent(clean)}&title=${encodeURIComponent(title || 'تقرير المحاضرة')}`;
+      window.open(readerUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      window.open(clean, '_blank', 'noopener,noreferrer');
+    }
   }
 
   // ==========================================================================
@@ -411,7 +479,7 @@
               if (item.links && item.links.length > 0) {
                 openCategoryItemModal(item, { title: `${catObj.title} &bull; ${sub.title}`, icon: sub.icon });
               } else if (item.url && item.url.trim() !== "") {
-                window.open(item.url, '_blank', 'noopener,noreferrer');
+                openDestinationUrl(item.url, item.title);
               } else {
                 openCategoryItemModal(item, { title: `${catObj.title} &bull; ${sub.title}`, icon: sub.icon });
               }
@@ -507,7 +575,7 @@
                 if (item.links && item.links.length > 0) {
                   openCategoryItemModal(item, catObj);
                 } else if (item.url && item.url.trim() !== "") {
-                  window.open(item.url, '_blank', 'noopener,noreferrer');
+                  openDestinationUrl(item.url, item.title);
                 } else {
                   openCategoryItemModal(item, catObj);
                 }
@@ -799,7 +867,7 @@
         if (resource && resource.links && resource.links.length > 0) {
           openResourceModal(lectureId, resourceId);
         } else if (resource && resource.url && resource.url.trim() !== "") {
-          window.open(resource.url, '_blank', 'noopener,noreferrer');
+          openDestinationUrl(resource.url, `${lecture ? lecture.title : ''} — ${resource.name}`);
         } else {
           openResourceModal(lectureId, resourceId);
         }
@@ -1055,13 +1123,20 @@
     const header = document.querySelector('.site-header');
     if (!header) return;
 
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    }, { passive: true });
 
     // Mobile nav toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');

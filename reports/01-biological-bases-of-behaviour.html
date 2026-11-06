@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسس البيولوجية للسلوك | تفريغ المحاضرة كاملاً بشرح د. أيمن الحسيني بالعامية المصرية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-light: #e0f2fe;
+            --secondary: #0f766e;
+            --secondary-light: #ccfbf1;
+            --accent-purple: #7c3aed;
+            --accent-purple-light: #ede9fe;
+            --accent-amber: #d97706;
+            --accent-amber-light: #fef3c7;
+            --accent-rose: #e11d48;
+            --accent-rose-light: #ffe4e6;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        .dark-mode {
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --primary-light: #082f49;
+            --secondary: #2dd4bf;
+            --secondary-light: #134e4a;
+            --accent-purple: #a78bfa;
+            --accent-purple-light: #2e1065;
+            --accent-amber: #fbbf24;
+            --accent-amber-light: #451a03;
+            --accent-rose: #fb7185;
+            --accent-rose-light: #4c0519;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.85;
+            transition: background-color 0.3s, color 0.3s;
+            padding-bottom: 80px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0369a1 100%);
+            color: #ffffff;
+            padding: 40px 20px 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 6px 18px;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            font-weight: 700;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        header p.subtitle {
+            font-size: 1.15rem;
+            color: #bae6fd;
+            max-width: 850px;
+            margin: 0 auto 15px;
+            font-weight: 600;
+        }
+
+        .lecturer-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 0.98rem;
+            color: #f8fafc;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1440px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* Color Legend Bar */
+        .color-legend-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 16px 22px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .color-legend-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 8px;
+        }
+        .dark-mode .color-legend-header {
+            color: var(--primary);
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .legend-chip {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            transition: transform 0.2s;
+        }
+
+        .legend-chip:hover {
+            transform: translateY(-2px);
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .legend-blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; }
+        .legend-blue .legend-dot { background: #0284c7; }
+        .dark-mode .legend-blue { background: #082f4940; border-color: #0369a1; color: #bae6fd; }
+
+        .legend-green { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+        .legend-green .legend-dot { background: #16a34a; }
+        .dark-mode .legend-green { background: #064e3b30; border-color: #15803d; color: #bbf7d0; }
+
+        .legend-rose { background: #fff1f2; border: 1px solid #fecdd3; color: #881337; }
+        .legend-rose .legend-dot { background: #e11d48; }
+        .dark-mode .legend-rose { background: #4c051930; border-color: #be123c; color: #fecdd3; }
+
+        .legend-amber { background: #fefce8; border: 1px solid #fef08a; color: #713f12; }
+        .legend-amber .legend-dot { background: #d97706; }
+        .dark-mode .legend-amber { background: #451a0330; border-color: #b45309; color: #fde68a; }
+
+        .legend-purple { background: #faf5ff; border: 1px solid #e9d5ff; color: #581c87; }
+        .legend-purple .legend-dot { background: #7c3aed; }
+        .dark-mode .legend-purple { background: #2e106530; border-color: #6d28d9; color: #e9d5ff; }
+
+        /* Sticky Control Bar */
+        .controls-bar {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 260px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 42px 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            background: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            color: #ffffff;
+        }
+
+        /* Filter tags */
+        .filter-tags {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            margin-bottom: 20px;
+        }
+
+        .filter-chip {
+            padding: 7px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-chip.active, .filter-chip:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        /* Main Accordion Card */
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .accordion-item.open {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .accordion-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: rgba(2, 132, 199, 0.04);
+        }
+
+        .accordion-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .section-number {
+            width: 38px;
+            height: 38px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .accordion-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .accordion-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 6px;
+        }
+
+        .tag-blue { background: var(--primary-light); color: var(--primary-dark); }
+        .tag-purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .tag-green { background: var(--secondary-light); color: var(--secondary); }
+        .tag-amber { background: var(--accent-amber-light); color: var(--accent-amber); }
+        .tag-rose { background: var(--accent-rose-light); color: var(--accent-rose); }
+
+        .accordion-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-body);
+            color: var(--text-muted);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .accordion-item.open .accordion-icon {
+            transform: rotate(180deg);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 22px;
+            border-top: 1px solid var(--border);
+            background: var(--bg-card);
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sub-Accordions */
+        .sub-accordion {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin: 14px 0;
+            overflow: hidden;
+            background: var(--bg-body);
+        }
+
+        .sub-header {
+            padding: 13px 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 800;
+            font-size: 1.02rem;
+            background: rgba(0, 0, 0, 0.02);
+            transition: background 0.2s;
+        }
+
+        .sub-header:hover {
+            background: rgba(2, 132, 199, 0.06);
+        }
+
+        .sub-content {
+            display: none;
+            padding: 18px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            font-size: 1rem;
+        }
+
+        .sub-accordion.open .sub-content {
+            display: block;
+        }
+
+        .sub-accordion.open .sub-header {
+            border-bottom: 1px solid var(--border);
+            color: var(--primary);
+        }
+
+        /* Slide Box */
+        .slide-box {
+            background: #f0fdf4;
+            border-right: 4px solid #16a34a;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+        }
+        .dark-mode .slide-box {
+            background: #064e3b25;
+            border-right-color: #22c55e;
+        }
+
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #15803d;
+            font-weight: 800;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+        .dark-mode .slide-badge { color: #4ade80; }
+
+        /* Doctor Verbatim Box */
+        .doctor-verbatim {
+            background: #eff6ff;
+            border-right: 5px solid #0284c7;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .dark-mode .doctor-verbatim {
+            background: #082f4940;
+            border-right-color: #38bdf8;
+        }
+
+        .doctor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0284c7;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 3px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .doctor-text {
+            color: var(--text-main);
+            font-size: 1.04rem;
+            line-height: 1.95;
+            white-space: pre-line;
+        }
+
+        .doctor-text strong {
+            color: #0369a1;
+            font-weight: 800;
+        }
+        .dark-mode .doctor-text strong {
+            color: #38bdf8;
+        }
+
+        /* Question Box */
+        .question-box {
+            background: #fff1f2;
+            border: 1.5px dashed #f43f5e;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin: 15px 0;
+        }
+        .dark-mode .question-box {
+            background: #4c051930;
+            border-color: #fb7185;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e11d48;
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .dark-mode .question-header { color: #fb7185; }
+
+        .question-answer {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 10px;
+            border: 1px solid var(--border);
+            font-size: 0.98rem;
+        }
+
+        /* Doctor Example / Metaphor Box */
+        .metaphor-box {
+            background: #fefce8;
+            border-right: 4px solid #ca8a04;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin: 14px 0;
+        }
+        .dark-mode .metaphor-box {
+            background: #451a0330;
+            border-right-color: #facc15;
+        }
+
+        .metaphor-badge {
+            color: #854d0e;
+            font-weight: 800;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .dark-mode .metaphor-badge { color: #fde047; }
+
+        /* Key Pearls */
+        .pearl-box {
+            background: #faf5ff;
+            border-right: 4px solid #9333ea;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin: 14px 0;
+        }
+        .dark-mode .pearl-box {
+            background: #2e106530;
+            border-right-color: #c084fc;
+        }
+
+        .pearl-badge {
+            color: #7e22ce;
+            font-weight: 800;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .dark-mode .pearl-badge { color: #d8b4fe; }
+
+        /* Tables */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .styled-table th {
+            background: #f1f5f9;
+            color: #334155;
+            font-weight: 800;
+            text-align: right;
+            padding: 12px 14px;
+            border-bottom: 2px solid var(--border);
+        }
+        .dark-mode .styled-table th {
+            background: #1e293b;
+            color: #cbd5e1;
+            border-bottom-color: #334155;
+        }
+
+        .styled-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .styled-table tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.7rem; }
+            .controls-bar { flex-direction: column; align-items: stretch; }
+            .action-buttons { justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-badge">كلية الطب - جامعة الأزهر | قسم الطب النفسي</div>
+        <h1>الأسس البيولوجية للسلوك (Biological Bases of Behavior)</h1>
+        <p class="subtitle">المحاضرة كاملة متسجلة بالعامية المصرية التلقائية اللذيذة وبنفس كلام الدكتور أيمن الحسيني بالحرف مع شرايح الباور والأسئلة والأمثلة الواقعية</p>
+        <div class="lecturer-info">
+            <span>🎙️ كلام وشرح: د. أيمن الحسيني (أستاذ الطب النفسي المساعد)</span>
+            <span>•</span>
+            <span>☕ روق كدة وافتح القوائم واستمتع بالمحاضرة</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- دليل الدلالات اللونية -->
+        <div class="color-legend-card">
+            <div class="color-legend-header">
+                <span>🎨</span>
+                <span>دليل الدلالات اللونية:</span>
+            </div>
+            <div class="legend-grid">
+                <div class="legend-chip legend-blue">
+                    <span class="legend-dot"></span>
+                    <div>
+                        <strong>الأزرق — كلام وشرح الدكتور:</strong><br>
+                        <span>تفريغ كلام أ.د. أيمن الحسيني نصاً بالعامية المصرية التلقائية كما قاله في المدرج.</span>
+                    </div>
+                </div>
+                <div class="legend-chip legend-green">
+                    <span class="legend-dot"></span>
+                    <div>
+                        <strong>الأخضر — شرائح الباوربوينت:</strong><br>
+                        <span>المحتوى والمصطلحات والبيانات الرسمية من شرايح الـ Slides الإنجليزية الأصلية.</span>
+                    </div>
+                </div>
+                <div class="legend-chip legend-rose">
+                    <span class="legend-dot"></span>
+                    <div>
+                        <strong>الأحمر والوردي — أسئلة الدكتور:</strong><br>
+                        <span>الأسئلة الشفوية والتفاعلية اللي سألها الدكتور للطلبة في القاعة مع إجاباتها النموذجية.</span>
+                    </div>
+                </div>
+                <div class="legend-chip legend-amber">
+                    <span class="legend-dot"></span>
+                    <div>
+                        <strong>الكهرماني — تشبيهات وأمثلة الدكتور:</strong><br>
+                        <span>أمثلة وقصص المحاضرة الشعبية والواقعية (حلة المحشي، بدلة سمير غانم، حلب الجاموسة..).</span>
+                    </div>
+                </div>
+                <div class="legend-chip legend-purple">
+                    <span class="legend-dot"></span>
+                    <div>
+                        <strong>البنفسجي — الزتونة ونقاط الامتحان:</strong><br>
+                        <span>الخلاصات الطبية الدقيقة (Clinical Pearls) والمعادلات العصبية الهامة للامتحانات.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="دوّر على أي كلمة (محشي، سمير غانم، بلطجية، جاموسة، كيبورد، صلاة، أبتريل، كورتيزول...)" onkeyup="filterContent()">
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="expandAll()">
+                    <span>➕ افتح كل القوائم المنسدلة</span>
+                </button>
+                <button class="btn" onclick="collapseAll()">
+                    <span>➖ اقفل كله</span>
+                </button>
+                <button class="btn" onclick="toggleDarkMode()">
+                    <span id="themeIcon">🌙</span> <span id="themeText">الوضع الليلي</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="filter-tags">
+            <span class="filter-chip active" onclick="setFilter('all', this)">📋 المحاضرة كاملة (12 موضوع)</span>
+            <span class="filter-chip" onclick="setFilter('questions', this)">❓ أسئلة الدكتور للطلبة نصاً</span>
+            <span class="filter-chip" onclick="setFilter('neurotransmitters', this)">🧪 النواقل العصبية السبعة</span>
+            <span class="filter-chip" onclick="setFilter('metaphors', this)">💡 تشبيهات وقصص الدكتور الحصرية</span>
+            <span class="filter-chip" onclick="setFilter('endocrine', this)">🩸 الغدد الصماء والهرمونات</span>
+            <span class="filter-chip" onclick="setFilter('anatomy', this)">🧠 تشريح فصوص ونوى المخ</span>
+        </div>
+
+        <!-- MAIN ACCORDIONS CONTAINER -->
+        <div id="contentList">
+
+            <!-- SECTION 1 -->
+            <div class="accordion-item open" data-category="general">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">1</div>
+                        <div>
+                            <div class="accordion-title">دخلة المحاضرة: إيه هو موديول الـ Behavioral Sciences؟ وشرف الطب النفسي والعقل vs المخ</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 1, 4</span>
+                                <span class="tag tag-rose">سؤال الدكتور في أول دقيقة</span>
+                                <span class="tag tag-purple">التلفزيون والعفريت</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slide 1 & 4)</div>
+                        <p><strong>Biological bases of behavior</strong> | By: Ayman al hosainey - Ass. prof of psychiatry - Al Azhar university</p>
+                        <p><strong>The nervous system & Behavioral Sciences:</strong> Introduction to biological foundations of behavior.</p>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ كلام الدكتور في أول المحاضرة والاتفاق مع الطلبة نصاً:</div>
+                        <div class="doctor-text">
+"«... ألطف حاجة كنت بتستشهدوا بها زمان، كويس؟ اللي عايز ياكل، واللي عايز ينام، واللي عايز يخرج، واللي عايز يعمل أي حاجة هو حر طليق، بس ما يتكلمش مع اللي جنبه، ماشي؟ ولما نطرح أسئلة على حضراتكم أستأذنكم ما حدش يتكلم غير لما يرفع إيديه، ده بس علشان ننظم الحوار يعني.
+
+رجاء من حضراتكم ما تتكلموش مع بعض، مش حاجة personal إطلاقاً، بس علشان أنا بتشتت من الصوت، فأستأذن حضراتكم ما حدش يتكلم خالص مع اللي جنبه. اللي عايز يتكلم معايا يتكلم معايا في أي حاجة هو عايز يتكلم فيها على مدار المحاضرة، بس مش مع اللي جنبه. اتفقنا؟»"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور للطلبة: الموديول بتاعنا بيتعامل مع إيه؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "وأي علم بندرسه لابد نكون عارفين الموضوع اللي بيتعامل معاه إيه بالظبط، فالـ Behavioral Sciences تفتكروا بيتعامل مع إيه؟"</p>
+                        <div class="question-answer">
+                            <strong>الطلبة ردوا:</strong> "سلوك الإنسان."<br>
+                            <strong>الدكتور سألهم تاني:</strong> "ماشي، يعني إيه سلوك الإنسان؟"<br>
+                            <strong>طالب جاوب:</strong> "يعني إزاي بيقدر يستجيب ويتصرف في المواقف المختلفة."<br>
+                            <strong>الدكتور عقّب وقال:</strong> "تمام، ده تفسير تاني، تمام. فإحنا موضوعنا الأساسي هو سلوك البشر، بس سلوك البشر مش من حيث إيه نوع سلوك البشر، سلوك البشر من حيث إيه الـ Factors اللي بتؤثر في سلوك الإنسان وبتحركه، ماشي؟ مالناش دعوة السلوك ده صح أو غلط، أو الناس بتعمل إيه بالظبط، ده علم آخر ومبحث آخر مالوش دعوة بينا إحنا. اللي إحنا بندرسه: إيه العوامل المختلفة اللي ممكن تؤثر في سلوك الإنسان، وكذلك العمليات العقلية."
+                        </div>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ الدكتور بيوضح: ليه الطب النفسي هو أعلى وأشرف فرع في الطب؟</div>
+                        <div class="doctor-text">
+"«وإحنا أساساً فرعنا الطب النفسي، وعشان حضراتكم تبقوا عارفين: إحنا بنعتبر المجال بتاعنا هو ألطف فروع الطب، كويس؟ فأنتم بتتعاملوا مع أعظم دكاترة في العالم! 
+
+<strong>ليه فرعنا الطب النفسي هو أعلى حاجة في الوجود يعني في الطب؟</strong>
+مش في الطب بس، وفي حاجات كتيرة.. لأن شرف العلم بشرف المعلوم؛ كل ما بيكون الموضوع بتاعنا شريف، كل ما بيكون العلم ده شريف. وأعلى وأشرف العلوم هي العلوم الشرعية، وأشرف العلوم الشرعية هي علوم العقيدة المتعلقة بذات الله تعالى. ويلي أشرف حاجة بعد علوم الدين هو الإنسان نفسه، وأشرف حاجة في الإنسان إن إحنا نحافظ على صحته. 
+
+فعلوم الطب في الشرف تلي علوم الشريعة، وعلوم الطب بتتفاوت في الشرف على حسب الموضوع بتاعها؛ فأكيد يعني مش هنساوي ما بين اللي بيتعامل مع عقل الإنسان ومع الجهاز البولي مثلاً، ولا الجهاز الهضمي، أكيد يعني! فبالتالي عقل الإنسان هو أشرف من أجهزة كتيرة في الجسم، فبما إن عقل الإنسان هو أشرف ما في الإنسان، فبالتالي فرع الطب اللي بيتعامل مع العقل هو أشرف الفروع، لأن العقل هو ما يميز الإنسان، صح كده يا جماعة؟»"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور: إيه الفرق بين العقل والمخ؟ وإيه الوظائف العليا؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "وعايز حضراتكم تعرفوا إن العقل غير المخ؛ لأن المخ بيقوم بوظائف كثيرة جداً، منها وظائف بنشترك فيها مع الحيوانات، وبعض الحيوانات أفضل مننا فيها. لكن ما يميز الإنسان وظائف معينة، اللي هي الوظائف العليا للمخ، زي إيه مثلاً؟ الوظائف العليا اللي بتميز الإنسان؟"</p>
+                        <div class="question-answer">
+                            <strong>الطلبة قالوا:</strong> "التفكير مثلاً" — "التحكم في الغرائز" — "الإدراك".<br>
+                            <strong>الدكتور رَدّ عليهم بالضحك:</strong> "ماشي، التحكم في الغرائز.. المفروض يعني! ما ده تفكير، ده جزء من التفكير، لكن فيه حاجات تانية كمان؛ الإدراك.. الإدراك مختلف في الإنسان. ده كله هندرسه، يعني الإدراك والتفكير، كل وظيفة نرى إن الإنسان فيها متميز عن باقي المخلوقات دي من الوظائف العليا، ده موضوع دراستنا في الموديول ده، والخلل فيها موضوع دراستنا إن شاء الله في الـ Psychiatry لما تكبروا شوية وتوصلوا لسنة رابعة."
+                        </div>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">📺 تشبيه الدكتور: التلفزيون المكسور والعفريت (الاختزالية الغربية vs الروح)</div>
+                        <div class="doctor-text">
+"«العلوم دي كلها طالعة من منظومة غربية، والمنظومة الغربية الحديثة اللي طلعت كل هذه العلوم متأثرة بفلسفة إلحادية، تنكر وجود الخلق، وترى إن الإنسان ما هو إلا نتاج عمليات تطور، مش مادة تطورت؟ وبالتالي بيتعاملوا مع الإنسان على إنه مادة!
+
+البيولوجيين بيحاولوا يفسروا كل السلوك الإنساني من خلال نماذج بيولوجية وبيفترضوا إنها قادرة على تفسير كل شيء! واللي مش عارفين يفسروه، بيقولوا هنعرف نفسره في وقت تاني؛ ليه؟ لأنه بينطلق من فكرة إن الإنسان بيولوجي، زي التلفزيون؛ <strong>التلفزيون بنصلحه إزاي؟ بنفتحه ونصلحه من جواه. إذا ما عرفناش نصلح حاجة، مش هنقول ده فيه عفريت راكب التلفزيون! هنقول إن فيه حاجة بايظة مش عارفينها لسه، بس هنعرفها كمان شوية.</strong>
+
+نظراً لنظرتنا إحنا للإنسان إنه جسد وروح، والروح دي من خلق الله عز وجل ومن نفخ الله تعالى فيها، والروح دي ليها وظائف مش حاجة وخلاص يعني. والنفس مفهوم أعقد بكتير جداً ومركب من النظرة البسيطة الاختزالية.. اختزالية دي يعني بيختزلوا السلوك الإنساني في حاجات بسيطة. طبعاً ده خطأ، بمعنى إن الاختزالية خطأ، لكن هل الفرضيات اللي محطوطة خطأ؟ لا، هي صحيحة جزئياً، لكن لا تفسر كل شيء!»"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 2 -->
+            <div class="accordion-item" data-category="general">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">2</div>
+                        <div>
+                            <div class="accordion-title">إزاي بنعرف أسرار المخ؟ (الدراسات الدوائية بالصدفة، وإصابات المخ، وأشعة الـ fMRI)</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slide 2</span>
+                                <span class="tag tag-rose">هل الدوبامين بتاع السعادة؟</span>
+                                <span class="tag tag-amber">قصة الدكتور والـ micturition في الشارع</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slide 2)</div>
+                        <p><strong>Research methods in behavioral neuroscience:</strong> Brain lesions, Functional studies (Functional MRI, Evoked potentials / EEG).</p>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور المفاجئ: مين قالكم إن الدوبامين ده بتاع السعادة؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "مثلاً يعني: كم واحد هنا يعرف إن الدوبامين ده بتاع اللذة، بتاع السعادة؟ حد عارف الكلام دوت؟ عرفنا منين إن ده بتاع السعادة؟ عرفناها إزاي ديت؟"</p>
+                        <div class="question-answer">
+                            <strong>الدكتور صدمهم وقال:</strong> "طبعاً هو مش بتاع السعادة ولا حاجة! إنتوا بتعرفوا إن الدوبامين بتاع السعادة؟ الدوبامين مش هرمون السعادة، ولا هرمون أصلاً! أومال إيه بقى؟ Neurotransmitter، بتاع إيه؟ لذة ولا سعادة؟ لذة، واللذة غير السعادة، ماشي؟ 
+اللذة غير السعادة، لكن فيه ناس بتعتقد إن اللذة هي السعادة، يعني لو حد بيتبنى منظور شهواني للحياة فهيعتقد إن اللذة هي السعادة، فبناكل أكل حلو أو نعمل علاقات كده يبقى إحنا سعداء؟ تعتقدوا ذلك وخربت الدنيا! السعادة شيء.. ده خاطب الروح، حاجات معنوية، واللذة شيء آخر."
+                        </div>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ قصة الدكتور: إزاي اكتشفوا دور الدوبامين بالصدفة في الخمسينات؟</div>
+                        <div class="doctor-text">
+"«الواقع إن الدراسات اللي بتتعمل على المخ اللي بتصل لمثل هذه الطروحات، كلها حاجات غير مباشرة، بنلاحظ ملاحظة ما بالصدفة، وبعدين لما بنلاحظها بنبدأ نفسرها.
+إزاي مثلاً علاقة الدوبامين باللذة جات إزاي؟ عرفوها إزاي؟ 
+قدراً كده، كان فيه ناس عندها مرض فصام (Schizophrenia)، ما كانوش عارفين يعالجوهم، وكانوا تلاقيهم مجانين في الشوارع (Homeless) وبيشتموا وبيتكلموا مع نفسهم. كان زمان ما بنعرفش نعالجهم في الخمسينات من القرن الماضي، فكانوا بيلموهم يحطوهم في مستعمرات يقفلوا عليهم لحد ما يموتوا! وكانوا فرصة بقى مالهمش أهل ومرميين كده في الشوارع فكانوا بيعملوا عليهم تجارب! كل واحد عنده دواء جديد يحب يجربه يقوم جايب دول يجرب فيهم يعني!
+
+بالصدفة كده بيجربوا دواء من أدوية الحساسية (Antihistaminic)، لقوهم خفوا! ببساطة شديدة يعني لقوهم خفوا وبقوا كويسين! فلما شافوا الدواء دوت، لقوا الدواء بيشتغل على الدوبامين، بيعمل حاجة اسمها <strong>Dopamine receptor antagonist</strong>، يعني بيقفل الدوبامين. 
+إدوهم الدواء ده خفوا، يعني بقوا عاقلين وكل حاجة، بس بعد ما خفوا قالوا: 
+<strong>'إن إحنا ما عودناش بنستمتع بأي شيء، لو كلنا أي أكلة كله زي بعضه، أي حاجة بنعملها زي بعضها!'</strong> ماشي؟ صدفة كده!
+
+فمن هنا جات فكرة: هو ممكن يكون الدوبامين ليه علاقة باللذة؟ جايز! طب تعالوا نجرب أدوية تانية تزود الدوبامين، لقوا الناس اللي بتاخد أدوية تزود دوبامين بيبقى عندهم سعادة فظيعة وبهجة شديدة وكل حاجة حلوة ومنورة وزيادة عن اللزوم! 
+فبدأوا يربطوا: يبدو كده إن الدوبامين لما يقل ما عادش الناس بتتبسط، ولما بيزيد الناس بتتبسط زيادة عن اللزوم، صح كده؟ يبقى ده دليل غير مباشر. 
+<strong>لكن هل حد دخل وقاس الدوبامين جوة المخ؟ ده ما حصلش، مش عارفين يعملوه لحد دلوقتي! يبقى إحنا بنجيب معلوماتنا منين؟ من الدراسات الدوائية!</strong>»"
+                        </div>
+                    </div>
+
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🔍 الطريقتين اللي بنعرف بيهم أنهي حتة في المخ مسؤولة عن السلوك ده</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <p><strong>1. إصابات المخ (Brain Lesions / Stroke / Trauma / Tumors):</strong></p>
+                            <div class="doctor-text">
+"«أي عطب أو ورم في المخ بوّظ حتة معينة، فلما ييجي الورم في منطقة معينة يحصل Loss of function معين ويتكرر مع كذا عيان، فنستنتج إن الحتة دي مسؤولة عن الوظيفة دي.»"
+                            </div>
+
+                            <div class="metaphor-box">
+                                <div class="metaphor-badge">💡 قصة الدكتور: الدكتور المحترم اللي عمل micturition في الشارع!</div>
+                                <div class="doctor-text">
+"«إنتوا عارفين الآية: {كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ}، الناصية اللي هي الجبهة، دي الـ Prefrontal cortex بتمثل شخصية الإنسان (Personality). طب عرفنا منين؟
+من الحوادث والإصابات؛ تلاقي الشخص بعد الإصابة حصله Change in personality.
+مثلاً يعني: مرة واحد نعرفه، اكتشف إن أبوه عنده Frontal tumor.. إزاي؟ 
+أبوه كان راجل محترم جداً، دكتور، كدة يعني، مرة وقف عمل micturition (تبول) في الشارع! تمام؟ ودي كانت حاجة Abnormal جداً عمره ما يعمل حاجة زي كده وهو كان دكتور! فعمل MRI طلع عنده Frontal tumor عامل ضغط على الـ Frontal cortex وشخصيته اتغيرت! فمن هنا فهمنا إن الـ Personality ليها علاقة بالـ Frontal lobe.»"
+                                </div>
+                            </div>
+
+                            <p style="margin-top: 14px;"><strong>2. الدراسات الوظيفية (Functional Studies):</strong></p>
+                            <div class="doctor-text">
+"«بندي للشخص Task معين يعمله (مثلاً مسألة حسابية)، ونشوف أنهي حتة في المخ بتبقى More active during this task:
+• <strong>الـ Functional MRI:</strong> بيقيس الـ Blood flow أو الـ Metabolism، الحتة اللي شغال فيها الدم تطلع في الصورة بلون أحمر (Hot areas)، والحتة اللي مش شغالة تطلع بلون أخضر (Cold areas).
+• <strong>الـ Evoked Potentials بالـ EEG:</strong> بنوصل أقطاب على الدماغ تقيس الـ Electrical activity of the brain أثناء عمل التاسك، فتطلع موجات زي رسم القلب ليها Amplitude وDuration محددة.»"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور: إيه الحاجات اللي بتيجي للمخ من برة وتغير سلوكنا فجأة؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "المخ بيتغير بحاجات Intrinsic، بس فيه حاجات جاية له من برة ممكن تغير الـ Human behavior.. ممكن يكون إيه مثلاً؟"</p>
+                        <div class="question-answer">
+                            <strong>الدكتور جاوب وقال:</strong> "الهرمونات! مش السيدات فجأة كده بيتقلبوا ومزاجهم بيتغير؟ يقولك عشان الهرمونات.. الهرمونات ليها Major influence على السلوك، عشان كده لما بنتعامل مع السلوك بيولوجياً بنهتم بـ Two main systems:
+1- الـ <strong>Central nervous system (المخ والحبل الشوكي)</strong>
+2- والـ <strong>Endocrine system (جهاز الغدد الصماء)</strong>"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 3 -->
+            <div class="accordion-item" data-category="anatomy">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">3</div>
+                        <div>
+                            <div class="accordion-title">الخلية العصبية وليه المخ ملون؟ (ترانزستور المخ، والفرق بين دكتور الأعصاب ودكتور النفسية)</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 3, 5</span>
+                                <span class="tag tag-amber">تشبيه الترانزستور</span>
+                                <span class="tag tag-purple">Gray vs White Matter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slide 5)</div>
+                        <p><strong>Neurons: the basic elements of behavior:</strong> Contain a nucleus, send messages (Axon), receive messages (Dendrites), myelin sheath, axon terminal.</p>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ كلام الدكتور: تركيب النيورون وسر ألوان المخ نصاً:</div>
+                        <div class="doctor-text">
+"«عشان نفهم كيمياء المخ، المخ بيشتغل على الـ Cellular level، وخلايا المخ هي الـ Neurons.
+النيورون عبارة عن Cell body طالع منه شُعيرات اسمها Dendrites، وواحد منهم بيكون Very long اسمه الـ Axon، والـ Axon ده حواليه حاجة اسمها Myelin sheath، وممكن يوصل في بعض الخلايا لـ 1 متر! وبينتهي بحاجة اسمها Terminal dendrites.
+الـ Dendrites دي وظيفتها تعمل Connections between neurons، كل ما بتكتر وتتفرع كل ما بتعمل اتصالات أكتر.
+
+<strong>طب ليه المخ ملون؟ لما نبص على المخ نلاقيه حتة Gray وحتة White؟</strong>
+لأن الـ Cell body فيه عضيات (Organelles) بتخليه لونه غامق (Gray). أما الـ Axon حواليه Myelin sheath وده عبارة عن Fat (دهون)، والدهن لونه أبيض!
+فعشان كده الـ Gray matter عبارة عن تجمعات الـ Cell bodies، والـ White matter عبارة عن الـ Axons ماشية جنب بعضها وعاملة حبال ومسارات (Tracts).»"
+                        </div>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🔌 تشبيه الدكتور: الدوائر العصبية زي الترانزستور في البوردة!</div>
+                        <div class="doctor-text">
+"«الواقع يعني إن كل ما يكون فيه شوية Neurons متجمعين هنا، وشوية ترانزستور هنا، دي عاملة زي <strong>ترانزستور في الموصلات!</strong>
+كل مجموعة بيعملوا دوائر عصبية (Neuronal circuits) عشان يؤدوا وظيفة معينة، وعشان نطلع سلوك مركب (Complex behavior) محتاجين الدوائر دي كلها تشتغل مع بعض In harmony!
+أنا عشان أجيلكم النهاردة كده وأقف أشرح الكلام دوت: محتاج معلومات تيجي من الـ Memory، ومحتاج الـ Prefrontal cortex تنظم الكلام اللي هقوله، ومحتاج حاجة تظبط الـ Motor activity عشان أتحرك وأكتب.. كل ده شغال مع بعض In harmony عشان الـ Behavior ده يطلع في الآخر!»"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور: إيه الفرق بين دكتور المخ والأعصاب ودكتور الطب النفسي؟</div>
+                        <div class="question-answer">
+                            <div class="doctor-text">
+"«اللخبطة في المخ بتحصل من سكتين:
+1- يا إما الـ <strong>Structure of the cell</strong> يبوظ، يحصل جلطة أو سكتة (Stroke) تموّت الخلايا، أو الـ Myelin sheath يبوظ؛ الخلية نفسها باظت على الـ Anatomical أو الـ Histological level.. <strong>دول بتوع المخ والأعصاب (Neurology)</strong>، يصوروا بالرنين أو المقطعية (CT أو MRI) يشوفوا الحتة البيضاء ما عادتش بيضاء والرمادية باظت فيعرفوا مكان المشكلة.
+2- أما إحنا في <strong>الطب النفسي (Psychiatry)</strong> مالناش دعوة بالحكاية دي، المشكلة عندنا بتكون على الـ <strong>Biochemical level</strong> (في النواقل العصبية والتشابك العصبي)! دي بقى لو صورنا بالـ MRI العادي ما بنشوفش حاجة لأن ما عندناش طريقة نقيسها في الصورة، لكن بنقيس نشاط المخ بطرق تانية.»"
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 4 -->
+            <div class="accordion-item" data-category="neurotransmitters">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">4</div>
+                        <div>
+                            <div class="accordion-title">التشابك العصبي (Synapse): النواقل بتطلع إزاي؟ والذاكرة والبصمة البيولوجية، وليه مش بننسى أسامينا؟</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slide 6</span>
+                                <span class="tag tag-rose">ليه مش بننسى أسامينا؟</span>
+                                <span class="tag tag-amber">ينفع ناخد الدوبامين بالبؤ؟</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slide 6)</div>
+                        <p><strong>How the neurons communicate with each other?</strong> Release of neurotransmitter from terminal button -> cross synaptic cleft -> bind to postsynaptic receptor -> terminated by: 1- Deactivation by enzyme, 2- Reuptake pump for reuse.</p>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ كلام الدكتور نصاً: Zoom in على منطقة التشابك العصبي</div>
+                        <div class="doctor-text">
+"«الخلايا العصبية مش لامسين بعض، فيه بينهم فراغ اسمه <strong>Synaptic cleft</strong>، والمنطقة دي كلها اسمها <strong>Synapse</strong>.
+بيتواصلوا مع بعض برسالة كيميائية Chemical message اسمها النواقل العصبية (Neurotransmitters)، بتكون محبوسة جوة أكياس وحويصلات (Vesicles).
+لما الكهرباء بتوصل لنهاية العصب، يدخل الكالسيوم (Calcium influx)، فيخلي الحويصلات تهاجر للغشاء وترابتشر (Rupture) وترمي الناقل العصبي في الفراغ، يقوم يعدي ويمسك في الـ Receptors بتاعة الخلية التانية.
+
+<strong>قاعدة مهمة جداً:</strong>
+الخلية اللي قبل التشابك <strong>Presynaptic neuron بتستخدم ناقل عصبي واحد بس (One neurotransmitter)</strong>، يعني لو بتطلع دوبامين نسميها Dopaminergic neuron، لو أستيل كولين نسميها Cholinergic neuron وهكذا.
+<strong>لكن الخلية اللي بعد التشابك Postsynaptic neuron بتستقبل أكتر من ناقل عصبي (More than one neurotransmitter)!</strong> تلاقي عندها Receptors للدوبامين، وReceptors للسيروتونين، وReceptors للـ GABA!»"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور للطلبة: طب ليه الخلية المستقبلة بتستقبل أكتر من ناقل؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "طب ليه الـ Postsynaptic neuron بيحتاج يستقبل More than one neurotransmitter؟"</p>
+                        <div class="question-answer">
+                            <strong>الدكتور جاوب وقال:</strong> "عشان يحصل <strong>Balance في الوظيفة!</strong> أنا Sometimes بحتاج أعمل للنيورون Stimulation (تنبيه)، وSometimes بحتاج أعمله Inhibition (فرملة وتثبيط)، وSometimes عايزه يعمل حاجة تانية.. فيستقبل النواقل دي ويغير في الـ Function ويكوّن بروتينات وإنزيمات."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ سؤال الدكتور: الذاكرة بتتخزن إزاي؟ وإيه الـ Biological Print؟ وليه مش بننسى أسامينا؟</div>
+                        <p><strong>الدكتور بيسأل:</strong> "المعلومات دي هتتخزن في الـ Memory في شكل إيه؟ الذاكرة ليها Biological base بدليل الناس اللي بيتخبطوا أو يجيلهم زهايمر بيبدأوا ينسوا.. شكل البصمة البيولوجية إيه؟"</p>
+                        <div class="question-answer">
+                            <div class="doctor-text">
+"«صح، تكوين وصلات جديدة (New connections between neurons)، ومواد كيماوية غيرت في تركيب ووظيفة الخلية العصبية.
+طب التغيير ده بيبقى دائم ولا مؤقت؟ ده على حسب الـ <strong>Degree of stimulation:</strong>
+• لو الـ Stimulus كان خفيف ولحظي: بيحصل Transient change (تغيير مؤقت).
+• لو الـ Stimulation كان متكرر كتير ومستمر (Continuous continuous continuous): بيتحول لـ <strong>Permanent change</strong>!
+عشان كده إحنا <strong>مش بننسى أسامينا! ليه مش بننساها؟</strong> لأن اسمك اتكرر وسماعك ليه كان كتير جداً جداً فبقى خلاص Permanent change في النيورون. 
+إنما لو زرت مكان لمرة واحدة بس ممكن تنسى هو فين، لأن الـ Stimulation كان قليل!»"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ كلام الدكتور: لما الناقل يخلص.. بنعمل فيه إيه؟ وينفع ناخده بالبؤ؟</div>
+                        <div class="doctor-text">
+"«لو النبه خلص والناقل لسه قاعد في الـ Synaptic cleft وشغال، لازم نوقفه بطريقتين:
+1- <strong>Enzymatic destruction:</strong> إنزيم يكسره لما يوصل لحد معين.
+2- <strong>Reuptake pump:</strong> مضخة تشفطه وترجعه تاني جوة للخلية قبل التشابك عشان تستخدمه تاني (Recycle).
+
+<strong>ينفع يا جماعة ندي مريض نقص الدوبامين دوبامين بالبؤ؟</strong>
+لأ طبعاً! ما ينفعش ناخده بالبؤ، ولا سيروتونين.. ليه؟ لأنه جزيء ضخم ما بيعديش الـ <strong>Blood-brain barrier!</strong>
+طب لو إدينا المادة الخام (Precursor)؟ Precursor بيعدي، بس المشكلة إن المخ مش هيزود معدل التصنيع (Rate of production) بمزاجه لمجرد إن المادة الخام كتيرة!
+فاللي بنقدر نعمله إحنا كأطباء ونلعب فيه: <strong>نتحكم في مضخة الشفط (Reuptake pump) أو نتحكم في الإنزيم اللي بيكسر!</strong>»"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 5 -->
+            <div class="accordion-item" data-category="general">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">5</div>
+                        <div>
+                            <div class="accordion-title">ألاعيب كيمياء المخ: الـ Down-regulation ("يسد ودانه")، وانتكاسة المرضى، و"قفل الحنفية" بالـ Autoreceptors</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 7, 8</span>
+                                <span class="tag tag-amber">لغز الـ ADHD والمُنبهات</span>
+                                <span class="tag tag-rose">ليه العيان بينتكس ونرفع الدوز؟</span>
+                                <span class="tag tag-green">لما المية تفرط ونقفل الحنفية</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slides 7 & 8)</div>
+                        <p><strong>Chemical Calculator & Regulatory Mechanisms:</strong> Receiving excitatory & inhibitory inputs simultaneously. Mechanisms: Down-regulation, Up-regulation, Presynaptic Autoreceptors.</p>
+                    </div>
+
+                    <!-- SUB 1: Balance & ADHD -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>⚖️ 1. لغز الانتباه ومفارقة مريض الـ ADHD (ليه بندي منبه لواحد بيتحرك كتير؟)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«لازم يكون فيه توازن Balance بين النواقل المنبهة والمهدئة.
+مثلاً الـ <strong>Attention (الانتباه):</strong> تخيلوا لو إنتوا ماشيين في الشارع واخدين بالكم من تفاصيل كل حاجة في الحياة؛ كل نملة، وصوت كل مروحة، وحركة كل واحد، الحياة هتبقى مرعبة ومشتتة (Distracted)! مش هتعرف تعيش! ولو مش منتبه خالص هتلبس في حيطة!
+فلازم يكون فيه حاجة تزود الانتباه للتاسك، وحاجة تانية تفرمل وتقلل الانتباه للمثيرات التانية.
+
+<strong>طب مريض الـ ADHD؟</strong>
+الناس فاكرة مريض الـ ADHD بيتحرك كتير لأن عنده Stimulation عالي.. لأ! 
+مشكلة الـ ADHD إن الـ <strong>Inhibitory tone واطي (Hypoactive inhibition)!</strong> 
+المناطق المسؤولة عن الفرملة وكبح السلوك نايمة ومش شغالة! فالعيان بيبقى <strong>Disinhibited</strong>، يعني مفكوك ومفيش فرملة، كل ما ييجي في باله حاجة يعملها فوراً من غير تفكير!
+عشان كده بنعالجهم بدواء <strong>Stimulant (دواء منبه)!</strong> 
+ليه بنديه منبه؟ <em>I will stimulate the inhibition!</em> بنشط بيه مراكز التثبيط والفرملة في المخ فترجع تسيطر على حركته!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 2: Down & Up Regulation -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>📉 2. الـ Down-regulation ("يسد ودانه") والـ Up-regulation (ليه مريض الفصام بينتكس بعد فترة؟)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً: تشبيه إغلاق الأذن وسر انتكاسة المرضى</div>
+                                <div class="doctor-text">
+"«أنا دلوقتي لو صرخت فيكم أوتوماتيكالي هتعملوا إيه؟ <strong>هتسدوا ودانكم!</strong> ولو صوتي واطي؟ هتفتحوا ودنكم وتركزوا! ده بالظبط اللي بيحصل في الـ Synapse:
+
+• <strong>الـ Down-regulation:</strong> لما يكون فيه إثارة مفرطة (Excessive stimulation) لدوبامين مثلاً، الخلية المستقبلة تتلخبط ومش قادرة تستوعب، فتعمل إيه؟ <em>تسد ودانها!</em> يعني تلغي وتشفط الـ Receptors وتقلل عددها عشان تهدى!
+
+• <strong>الـ Up-regulation:</strong> لما يحصل نقص في التنبيه أو نقفل الريسبتورز بدواء، الخلية المستقبلة تحس بالعطش، فتعمل <strong>Up-regulation وتزود عدد الـ Receptors</strong> وتبقى الخلية <strong>Hypersensitive</strong> جداً!
+
+<strong>التطبيق الإكلينيكي اللي يهمنا في الشغل (Clinical Application):</strong>
+عيان الفصام لما بنديله دواء يقفل الدوبامين (Dopamine antagonist)، بعد ما يمشي على الدواء فترة، نلاقي العيان رجع ينتكس تاني!
+<strong>ليه انتكس؟</strong>
+لأن من كتر ما إنت قافل الريسبتورز، الخلية قامت عاملة Up-regulation وصنعت ريسبتورز تانية (Bypass)! فلو جرعتك كانت قافلة 10 ريسبتورز، الخلية كونت 20، فبقى فيه 10 شغالين والعيان انتكس!
+فبنضطر ساعتها <strong>نرفع الجرعة (Raise the dose)</strong> عشان نقفل الريسبتورز الجديدة!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 3: Autoreceptors -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🚰 3. المستقبلات الذاتية (Presynaptic Autoreceptors) — تشبيه "قفل الحنفية"</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً: لما المية تفرط وتخرج الصالة</div>
+                                <div class="doctor-text">
+"«لو افترضنا إن حصل <strong>Excessive release</strong> مفرط جداً، والإنزيم مش ملاحق، ومضخة الشفط مش ملاحقة، والدوبامين بدأ يهرب ويسيل برة الفراغ العصبي!
+أكيد لو فتحنا حنفية وبدأت المية تطلع من الحمام وتخرج في الصالة هنعمل إيه؟ <strong>هنروح نقفل الحنفية!</strong>
+طب المخ بيقفل الحنفية إزاي؟
+أول ما الناقل يفيض ويطلع برة، بيلاقي على الخلية المفرزة مستقبلات اسمها <strong>Presynaptic Autoreceptors</strong>. دي بتبقى Inhibitory، أول ما يمسك فيها تقوم <strong>قافلة الحنفية ومبطلة تطلع دوبامين تاني!</strong>
+
+<strong>طب إحنا بنستخدم ده في الأدوية؟</strong>
+أيوة! بعض أدوية الاكتئاب (Antidepressants) بتروح تعمل <strong>Block للـ Presynaptic autoreceptors</strong> دي! فلما تقفلها، الحنفية ما تقفلش، فيزيد إفراز الدوبامين والنورأدرينالين ويتحسن مزاج العيان!»"
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 6 -->
+            <div class="accordion-item" data-category="neurotransmitters">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">6</div>
+                        <div>
+                            <div class="accordion-title">جدول النواقل العصبية السبعة وشرح الدكتور بأمثلته الشعبية والتلقائية اللذيذة</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slide 9</span>
+                                <span class="tag tag-amber">بدلة سمير غانم</span>
+                                <span class="tag tag-purple">حلة المحشي</span>
+                                <span class="tag tag-rose">خلطة البلطجية والأبتريل</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 جدول الباور الأصلي (Slide 9)</div>
+                        <div style="overflow-x: auto;">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>الناقل العصبي</th>
+                                        <th>المكان والتأثير</th>
+                                        <th>الوظيفة في الجسم</th>
+                                        <th>أمثلة الخلل والاضطرابات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Acetylcholine (ACh)</strong></td>
+                                        <td>Excitatory (مخ، حبل شوكي، أعصاب طرفية)</td>
+                                        <td>حركة العضلات، التعلم، الذاكرة</td>
+                                        <td>في الزهايمر بيحصل تدهور في خلايا الأستيل كولين.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dopamine</strong></td>
+                                        <td>Inhibitory أو Excitatory في المخ</td>
+                                        <td>التحكم في الحركة، الانتباه، اللذة والمكافأة</td>
+                                        <td>زيادته تعمل فصام (Schizophrenia)، ونقصه يعمل شلل رعاش (Parkinson's).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Serotonin</strong></td>
+                                        <td>Inhibitory في المخ والحبل الشوكي</td>
+                                        <td>تنظيم المزاج، الأكل، النوم، الإثارة</td>
+                                        <td>نقصه مرتبط بالاكتئاب والوسواس القهري (OCD).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Norepinephrine</strong></td>
+                                        <td>Excitatory في المخ والجهاز العصبي</td>
+                                        <td>اليقظة، الانتباه، والإثارة</td>
+                                        <td>نقصه يسبب الاكتئاب، وزيادته تسبب الأرق.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GABA</strong></td>
+                                        <td>الناقل المثبط الرئيسي في المخ والحبل الشوكي</td>
+                                        <td>الأكل، تنظيم العدوان، النوم</td>
+                                        <td>نقصه يعمل تشنجات ورعشات وأرق شديد.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Glutamate</strong></td>
+                                        <td>الناقل المحفز الرئيسي في المخ والحبل الشوكي</td>
+                                        <td>تكوين الذاكرة والتعلم</td>
+                                        <td>زيادته تسبب تسمم الخلايا ونوبات صرع وصداع نصفي.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Endorphins</strong></td>
+                                        <td>مثبط رئيسي (أفيونات طبيعية)</td>
+                                        <td>تسكين الألم، مشاعر النشوة، الشهية، تأثير البلاسيبو</td>
+                                        <td>الأدوية المشابهة ليه (المورفين) بتسبب إدمان شديد.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- SUB 1: ACh -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>1️⃣ أستيل كولين (Acetylcholine) — تشبيه "بدلة سمير غانم" وأدلة الذاكرة والزهايمر</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«في منطقة معينة في المخ لازم يحصل balance بين الدوبامين والأستيل كولين:
+لما الدوبامين يقل يحصل تيبس ورعشة (Rigidity & tremors) زي <strong>مرض الشلل الرعاش (Parkinson's disease)</strong>.. فبنعالجه بـ L-dopa عشان يزود الدوبامين، أو ندي دواء Anticholinergic يقلل الأستيل كولين عشان نرجع التوازن للحركة!
+
+<strong>تشبيه بدلة سمير غانم في المتزوجون:</strong>
+الشغل في المخ كده عامل زي <em>بدلة سمير غانم في مسرحية المتزوجون! كل ما بنصلحها في حتة بتضرب من حتة تانية!</em>
+واحد عنده فصام (Schizophrenia) عنده زيادة دوبامين، فنديله Dopamine receptor antagonist.. الفصام يتحسن، بس الحركة تبوظ ويجيله أعراض شبه الشلل الرعاش! فنضطر نديله Anticholinergic drug عشان نرجع التوازن والحركة ترجع طبيعية.. 
+فلما استخدمنا الـ Anticholinergic drug لقينا الناس بتشتكي من شكوى: <strong>بقينا بننسى!</strong> فمن هنا بدأوا يفهموا إن الأستيل كولين له دور مهم جداً في الـ Memory formation!
+
+<strong>واللي أكد ده مرض الزهايمر (Alzheimer's disease):</strong>
+لقوا إن مريض الزهايمر بينسى بسبب تلف وضمور في الخلايا الكولينية في المخ (Degeneration in cholinergic neurons).
+فبقى عندنا دليلين يثبتوا إن الأستيل كولين محتاجينه في: الذاكرة (Memory)، والتعلم (Learning)، وحركة العضلات (Muscle movement).»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 2: Dopamine -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>2️⃣ الدوبامين (Dopamine) — اللذة مش السعادة، ومثال "حلة المحشي"، وسر الإدمان</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الدوبامين هو هرمون اللذة (Pleasure) مش هرمون السعادة!
+عرفناها من أدوية الفصام اللي بتقفل الدوبامين، العيان يشتكي ويقول: ما عدتش بنبسط بأي حاجة، كل حاجة بقت زي بعضها، حاجة بنسميها <strong>Anhedonia</strong>.
+ومحتاجين الدوبامين عشان الحركة تكون ناعمة وسلسة (Smooth muscle movement).
+
+<strong>مثال الدكتور التلقائي: حلة المحشي والـ Motivation:</strong>
+الدوبامين بنحتاجه في حياتنا اليومية مع أي حاجة بنحبها؛ يعني لو هتاكلوا حلة محشي هتتبسطوا وهيحصل Dopamine release.. 
+بس حلة المحشي ديت حاجة عشان إعدادها بنحتاج وقت كبير جداً ونقعد نحشي محشاية محشاية محشاية! <strong>إيه اللي يخلي واحدة تقعد تعمل هذا المجهود الكبير إلا إن عندها حماس ورغبة (Motivation)؟</strong>
+الـ Motivation دي بتاع الدوبامين، لأنه مبني على إن أنا هـ <strong>Expect the reward (أتوقع الجائزة والمكافأة)</strong>، هو المسؤول إنه يديك الـ Reward لما تخلص، فتبسط وتتحمس تعملها تاني وتالت!
+
+<strong>سر إدمان المخدرات:</strong>
+كل أنواع المخدرات بتعمل Pleasure عالية جداً، أعلى من المحشي شخصياً وأعلى من أي حاجة ممكن حد يحسها! لأن الـ Common final pathway لكل المخدرات إنها بتعمل Massive surge في إفراز الدوبامين، وعشان كده إدمانها خطير جداً!»"
+                                </div>
+                            </div>
+                            <div class="question-box">
+                                <div class="question-header">❓ سؤال الدكتور في آخر المحاضرة: الفرق بين دوبامين الشلل الرعاش والفصام؟</div>
+                                <div class="question-answer">
+                                    <strong>الدكتور جاوب وقال:</strong> "الاتنين دوبامين بس في أماكن ومسارات مختلفة (Different pathways):
+• في <strong>Parkinson's disease:</strong> بيحصل تلف وموت (Degeneration) لخلايا الدوبامين في حتة في المخ اسمها <em>Substantia nigra</em> (المسار الحركي).
+• أما في <strong>Schizophrenia:</strong> بيكون فيه إفراز مفرط للدوبامين (Excessive dopamine release) في مناطق الـ <em>Limbic system</em> (المسار الانفعالي).
+فالدوبامين موجود في كذا حتة، كل ما يبوظ في حتة بشكل يعمل مشكلة مختلفة!"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 3: Serotonin -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>3️⃣ السيروتونين (Serotonin) — منظم المزاج ("ما عودتش بحزن بس ما عودتش بنبسط") والأكل والنوم والجنس</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الدوبامين عشان أحس باللذة، طب السيروتونين؟ هو اللي بيعمل <strong>Regulation للـ Pleasure والمود!</strong>
+عندنا حوالي 7 أنواع من مستقبلات السيروتونين وكل نوع له Subtypes بتوصل لحوالي 10 أنواع في المخ.
+واحدة من أهم وظائف السيروتونين إنه بينظم المود؛ بيشيل المشاعر السلبية (Negative emotions): بيشيل الـ Depression، والـ Anxiety، والـ Stress.. لكنه مش بيبسط! اللي بيبسط هو الدوبامين!
+عشان كده لما بنعالج مريض الاكتئاب بدواء يزود السيروتونين، العيان يقولك: 
+<strong>'أنا ما عودتش حزين، بس ما عودتش بنبسط برضه!'</strong> يعني السيروتونين دوره يمنع المود إنه ينزل ويقع في الحزن.
+
+<strong>الأعراض الجانبية لأدوية السيروتونين (Side Effects):</strong>
+1- <strong>الشهية للأكل (Food appetite):</strong> السيروتونين هو اللي بيدينا إحساس الشبع لما ناكل.. فلما نلعب فيه، العيان يقول: 'أنا بقيت من ساعة ما أخدت الدواء باكل ومش بشبع! نفسي أشبع مش عارف!'.
+2- <strong>الرغبة الجنسية (Sexual desire):</strong> فيه فرق بين الرغبة (Wanting) واللذة (Enjoying). الدوبامين هو اللي بيديك اللذة، أما السيروتونين فبيقلل الرغبة (Sexual desire)، العيان يقولك: 'ما عادش بتيجي على بالي'، وده أحياناً بنستخدمه لمصلحة المريض في علاج سرعة القذف.
+3- <strong>النوم والأحلام (Sleep stages):</strong> السيروتونين بينظم مراحل النوم؛ فلما يتلخبط العيان يقول: 'أنا طول الليل عندي أحلام! النوم ما عادش مريح ولا فيه Rest!'»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 4: Norepinephrine -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>4️⃣ النورإبينفرين (Norepinephrine) — تركيز الانتباه والنشاط السمبثاوي والأرق</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الـ Prefrontal cortex بتشتغل بـ Two neurotransmitters بشكل رئيسي عشان تنظم الانتباه: 
+الدوبامين (بشكل أساسي وأسرع) ومعه النورإبينفرين (بس بمعدل أبطأ Slower rate).
+عشان كده في علاج الـ ADHD، خط العلاج الأول (First-line) هي الأدوية اللي بتزود الدوبامين لأنها بتجيب نتيجة أسرع وأقوى.
+
+<strong>التأثير السمبثاوي:</strong>
+النورأدرينالين هو بتاع الجهاز العصبي السمبثاوي:
+• في الجسم من برة بيعمل زيادة ضربات القلب (Tachycardia).
+• وفي المخ من جوة بيعمل صحصحة ويقظة (Central arousal).
+عشان كده أدوية الاكتئاب اللي بتزود النورإبينفرين بتخلي العيان فايق ومصحصح، وممكن يشتكي إنه ما بينامش كويس وعنده أرق (Insomnia).»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 5: GABA -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>5️⃣ جابا (GABA) — الناقل المثبط الأكبر، وسر "خلطة البلطجية والأبتريل والكحول"</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الجابا هو The most abundant inhibitory neurotransmitter in the brain، هو الفرملة الكبيرة للمخ!
+أدوية القلق (Anxiolytics) زي الزانكس والألبرازولام (Benzodiazepines) بتشتغل كـ GABA agonist عشان تزود التثبيط وتهدي المخ.
+والجابا له دور مهم جداً في كبح وضبط النزعات العدوانية (Aggressive impulses).
+
+<strong>مفارقة خلطة البلطجية في الخناقات (Excessive Inhibition -> Extreme Aggression):</strong>
+المخ فيه مستويين:
+• <strong>القشرة المخية (Cortex):</strong> دي بتاعت الإنسانية والتعقل والتفكير الراقي والمحددات الاجتماعية، وهي اللي بتفرمل الغرائز وتمنعنا نضرب فلان أو نتصرف بهمجية.
+• <strong>النوى العميقة (Subcortical nuclei):</strong> دي بتاعت الغرائز الحيوانية والانفعالات البدائية العنيفة.
+
+إنتوا عارفين البلطجية اللي بيعملوا خناقات؟ قبل ما يخش خناقة بياخد خلطة مخدرات: 
+<em>بيضربله نص قرص ترامادول مع نص شريط أبتريل (أبتريل ده دواء بيشتغل على الجابا وبياخد دوز عالية جداً)!</em>
+إيه اللي بيحصل مع الدوز العالية دي؟
+في الجرعات العادية: الجابا بيهدي الغرائز الحيوانية.
+أما في <strong>الجرعات العالية جداً:</strong> بيحصل تثبيط للقشرة نفسها (Cortical suppression)! فلما القشرة المخية تتعطل فرملتها، ما عادش فيه تمييز ولا خوف، فالغرائز الحيوانية البدائية تنطلق بدون أي سيطرة! فتكون المحصلة النهائية شجاعة مفرطة وعنفاً!
+وده بالظبط اللي بيعمله <strong>شرب الخمر والكحول:</strong> بيشتغل على الجابا ويعمل Cortical suppression، فالنبي عليه الصلاة والسلام قال إنه لو شرب الخمر يزني ويقتل، لأن خلاص ما عادش فيه Cortical control والفرملة الإنسانية طارت تماماً!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 6: Glutamate -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>6️⃣ الجلوتامات (Glutamate) — المحفز الأكبر، وتسمم الخلايا (زي الصوت العالي اللي يبوظ الودن)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الجلوتامات هو The most stimulatory neurotransmitter in the brain، عكس الجابا تماماً.
+ومسؤول مع الأستيل كولين عن التعلم وتكوين الذاكرة (Learning & Memory formation).
+
+<strong>خطر التسمم الإثاري (Glutamate-induced excitotoxicity):</strong>
+زي ما الصوت لو سمعت صوت عالي جداً، في الأول هتحاول تسد ودنك، بس لو صوت عالي جداً ومستمر هيبوظ طبلة الودن!
+ده نفسه اللي بيحصل في خلايا المخ: الإثارة المفرطة بالجلوتامات بتعمل تنبيه ثم تدمير وموت للخلية (Alertness then destruction)!
+وده اللي لقوه بيحصل في <strong>مرض الزهايمر (Alzheimer's disease):</strong> الخلايا بتموت نتيجة نشاط الجلوتامات الزائد، عشان كده اخترعوا أدوية Glutamate / NMDA antagonists عشان تقلل تدهور المرض وتنقذ خلايا المخ.»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 7: Endorphins -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>7️⃣ الإندورفين والأفيونات الذاتية (Endorphins) — رحمة ربنا في تسكين الألم، ومتعة الجيم، وتشريط الجلد</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الأفيونات (Opioids) سموها نسبة لنبات الخشخاش (Opium poppy) اللي بيطلع المورفين والهيروين والترامادول.
+المخ بتاعنا جواه أفيونات طبيعية اسمها <strong>Endorphins (Endogenous opioids)</strong>، دي مسكن قوي جداً للألم (Endogenous analgesia).
+من آثار رحمة ربنا: أي خبطة، الهدوم اللي حضراتكم لابسينها، أي حركة عادية بتعمل تكسير بسيط في الخلايا وتفرز مواد مؤلمة.. فربنا برحمته جعل الإندورفين يفرز ويسكن ده، لولا الإندورفين لكانت الحركة العادية مؤلمة جداً!
+
+والإندورفين بيدي كمان <strong>نشوة (Rush)</strong>، والنشوة دي أعلى من اللذة!
+
+<strong>ظاهرة تشريط الجلد عند البنات لما تتضايق (Self-harm):</strong>
+واحدة لما تتضايق نفسياً تشرط إيدها.. طب بتشرطوا ليه؟ هي مش بتعمل كده عشان تشوف الدم! هي لما بتعور نفسها بيحصل Endorphin release كاستجابة للألم الجسدي، فالإندورفين يعمل Calming effect وراحة نفسية ويخفف وجعها النفسي!
+
+<strong>سر بتوع الجيم (Gym Application):</strong>
+بتوع الجيم بيشيلوا أوزان تقيلة جداً وبتلاقيه بيصرخ وهو بيلعب من شدة الوجع والـ Muscle failure.. طب بيروح تاني ليه وهو مبسوط؟
+لأن مع ألم الجيم الشديد بيحصل إفراز غزير للـ Endogenous opioids، فيعمل Pain suppression ويديه إحساس بالنشوة واللذة! وتلاقيهم لما يروحوا بياكلوا كتير وشهيتهم مفتوحة لأن الإندورفين بيحفز الشهية!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 7 -->
+            <div class="accordion-item" data-category="general">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">7</div>
+                        <div>
+                            <div class="accordion-title">الحبل الشوكي والجهاز الذاتي (ANS): سمبثاوي الهولك vs باراسمبثاوي الضفدعة</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 10-15</span>
+                                <span class="tag tag-rose">Fight or Flight (الهولك)</span>
+                                <span class="tag tag-green">Rest and Digest (الضفدعة المريحة)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slides 10-15)</div>
+                        <p><strong>The Spinal Cord:</strong> Bundle of neurons (communicating channel), spinal reflexes (Reflex arc: hot object -> sensory neuron -> spinal cord -> motor neuron -> muscle withdraws).</p>
+                        <p><strong>Autonomic Nervous System:</strong></p>
+                        <ul style="padding-right: 20px;">
+                            <li><strong>Sympathetic predominance:</strong> Fight or flight (The Hulk) - increased heart rate, energy mobilization.</li>
+                            <li><strong>Parasympathetic predominance:</strong> Rest and digest (Relaxed frog) - slowing down, digestion, energy conservation.</li>
+                        </ul>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ الشرح بالعامية المصرية اللذيذة:</div>
+                        <div class="doctor-text">
+"«الحبل الشوكي ده زي السنترال السريع اللي بتعدي فيه كابلات الأعصاب (Axons) رايحة وجاية بين المخ والجسم، وهو المسؤول عن ردود الفعل السريعة (Reflex arc)؛ تلمس شمعة أو حاجة سخنة تشد إيدك في جزء من الثانية قبل ما مخك يلحق يفكر!
+
+أما الجهاز العصبي الذاتي (ANS) ده شغال على ميزان التوازن (Homeostasis):
+• <strong>السمبثاوي (Sympathetic):</strong> وضع الخناقة والطوارئ (Fight or Flight)! ضربات قلب سريعة، دم رايح للعضلات، تنفس عالي، عشان كدة حاطط صورة <strong>'الهولك'</strong> الغضبان!
+• <strong>الباراسمبثاوي (Parasympathetic):</strong> وضع الأنتخة والمزاج والراحة والهضم (Rest and Digest)! تهدئة القلب، تشغيل المعدة والأمعاء، عشان كدة في الباور حاطط صورة <strong>'الضفدعة المسترخية'</strong> على ورقة الشجر وكرشها لفوق!»"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 8 -->
+            <div class="accordion-item" data-category="anatomy">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">8</div>
+                        <div>
+                            <div class="accordion-title">فصوص المخ وسيطرة القشرة: الفص الجبهي ("المدير العام")، وركن العربية vs الشراب الضايع!</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 16-18</span>
+                                <span class="tag tag-amber">المدير العام والـ Executive Functions</span>
+                                <span class="tag tag-purple">ليه الرجالة أحسن في السواقة والستات في الـ Multitasking؟</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slides 16-18)</div>
+                        <p><strong>The Brain Coronal Section & Lobes:</strong></p>
+                        <p>• <strong>Frontal Lobe:</strong> Executive functions, Motor strip, Broca area (speech production).</p>
+                        <p>• <strong>Parietal Lobe:</strong> Sensory strip, Calculations, Visuospatial abilities.</p>
+                        <p>• <strong>Temporal Lobe:</strong> Auditory area, Wernicke area (speech comprehension), Memory & Limbic connections.</p>
+                        <p>• <strong>Occipital Lobe:</strong> Visual area, Visual association.</p>
+                    </div>
+
+                    <div class="doctor-verbatim">
+                        <div class="doctor-badge">🎙️ كلام الدكتور: سيطرة القشرة المخية على الغرائز العميقة</div>
+                        <div class="doctor-text">
+"«المخ من برة قشرة رمادية (Cortex)، وفي النص مساحات بيضاء، وجوة فيه نوى عميقة (Subcortical nuclei).
+القاعدة الأساسية: <strong>الـ Subcortical nuclei هي اللي فيها الغرائز الحيوانية والانفعالات، لكنها Under the influence of the cortex!</strong> القشرة المخية هي القيادة العليا اللي بتفرمل وتهذب السلوك البشري.»"
+                        </div>
+                    </div>
+
+                    <!-- SUB 1: Frontal -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🧠 1. الفص الجبهي (Frontal Lobe) والوظائف التنفيذية — تشبيه "المدير العام للشركة"</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الفص الجبهي لونه أزرق في الباور، وهو أكبر فص، بالحجم ده مش موجود في أي كائن حي تاني، وده أهم جزء بيميز الإنسان!
+الفص الجبهي مسؤول عن حاجة مهمة جداً بنسميها: <strong>Executive functions of the brain (الوظائف التنفيذية).</strong>
+
+<strong>يعني إيه Executive functions؟</strong>
+دي وظائف المخ المسؤولة عن إدارة حياتنا اليومية: بنفكر إزاي، بنرتب أولوياتنا إزاي، بنرتب يومنا إزاي، القرارات اللي بناخدها، حل المشكلات، تفسير المثيرات، تركيز الانتباه، تنظيم الوقت.
+كلمة Executive يعني تنفيذي؛ زي المدير العام (Executive Manager) في أي شركة، مجلس الإدارة بياخد قرارات، بس مين اللي بينفذ ويحط الخطط بناءً على الموارد المتاحة ويتابع التنفيذ؟ المدير التنفيذي!
+فالفص الجبهي هو المدير العام لإدارة حياتنا اليومية. 
+وعشان كده الناس اللي عندها ADHD أو اللي بيجيلهم أورام أو خبطات في الفص الجبهي، بتتلخبط إدارة حياتهم وشخصيتهم بالكامل!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 2: Parietal -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🚗 2. الفص الجداري (Parietal Lobe) وركن العربيات vs الجسم الثفني وسر "الشراب الضايع"!</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور التلقائي اللذيذ في الفروق بين الرجالة والستات نصاً:</div>
+                                <div class="doctor-text">
+"«الفص الجداري (Parietal lobe) عشان نفهمه، لازم نكون عارفين الفرق ما بين الرجالة والستات في ركن العربية! هو في السواقة بصفة عامة، مين أحسن؟ أكيد الرجالة بصفة عامة.. ليه؟
+لأن الرجالة عندهم الـ <strong>Parietal lobe more developed!</strong>
+والفص الجداري مسؤول عن حاجتين: <strong>عن الحسابات وعن سواقة العربيات!</strong>
+مسؤول عن الـ <strong>Visuospatial abilities:</strong> تحديد المسافات، والسرعات، والأبعاد وإحنا ماشيين. وده مناسب لوظيفة الراجل قديماً في الخروج والمحاربة ومواجهة السيوف السريعة.
+
+<strong>طب الستات مفضلة في إيه بقى؟</strong>
+إحنا عندنا نصين في المخ متوصلين ببعض بألياف اسمها <strong>Corpus callosum (الجسم الثفني)</strong>.
+الـ Corpus callosum ده <strong>More developed في السيدات عن الرجال!</strong>
+وده بيخليهم شاطرين جداً في الـ <strong>Multitasking (تعدد المهام)!</strong>
+الست تلاقيها بتعرف تطبخ، وهي بتذاكر لابنها، وبتتابع المسلسل، وبتكلم قريبتها في التليفون، وبترتب البيت! ده إدارة البيت محتاجة القدرة دي!
+الراجل ما يعرفش يعمل كده، الراجل Monotask يعمل حاجة واحدة بس! 
+
+وعشان كده أمهاتنا <strong>بيعرفوا يجيبوا 'الشراب الضايع' وإحنا ما بنعرفش نجيبه!</strong>
+لأن الست عندها ذاكرة مكانية تفصيلية وعارفة كل حاجة في البيت مكانها فين ومركزة في التفاصيل دي، أما الراجل يدخل يرمي الشراب وخلاص مش في اهتماماته يحطه فين.. ده تيسير من ربنا سبحانه وتعالى في الخلق للبشر وكل واحد ليه ميزته!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 9 (NEWLY EXPANDED) -->
+            <div class="accordion-item open" data-category="anatomy">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">9</div>
+                        <div>
+                            <div class="accordion-title">النوى تحت القشرية (Subcortical Nuclei): الكيبورد والصلاة، والساعة البيولوجية والعين، ورعشة الخمرة!</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 19-21 + تفريغ الإضافة</span>
+                                <span class="tag tag-rose">الكتابة على الكيبورد والصلاة</span>
+                                <span class="tag tag-amber">ليه مفيش حُفاظ زي البخاري دلوقتي؟</span>
+                                <span class="tag tag-purple">تطويحة السكران والمخيخ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slides 19-21)</div>
+                        <p><strong>Subcortical Nuclei & Deep Structures:</strong></p>
+                        <p>• <strong>Basal Ganglia:</strong> Control certain patterns of behavior, Automatism, Synergism, Emotional, Memorization of motoric activities.</p>
+                        <p>• <strong>Hypothalamus:</strong> Higher center for autonomic nervous system, Endocrine system control, Circadian rhythm.</p>
+                        <p>• <strong>Cerebellum:</strong> Motoric memory, Attention, Coordination of movement, Control of emotions.</p>
+                        <p>• <strong>The Limbic System:</strong> Emotion, motivation, memory, and learning.</p>
+                    </div>
+
+                    <!-- SUB 1: Basal Ganglia -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>⌨️ 1. النوى القاعدية (Basal Ganglia) — سر الكتابة على الكيبورد، والسواقة، والصلاة الأوتوماتيك!</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً من التفريغ الجديد:</div>
+                                <div class="doctor-text">
+"«نيوكلياي موجودة جوة البرين اسمها Subcortical nuclei، بعضها له علاقة بالسلوك (Behavior).. 
+هنا فيه شرايح اتشالت من الباور.. حد مسحها.. طالما مش موجودة نكتب الـ <strong>Basal ganglia!</strong>
+
+<strong>إيه بقى وظيفة الـ Basal ganglia في السلوك (Behavior)؟</strong>
+حضراتكم بتكتبوا على الـ Keyboard، مظبوط كده؟ لما بتكتبوا على الكيبورد، أنتوا عارفين صباعكوا رايح فين ولا الحركة بتيجي أوتوماتيكلي؟ 
+وأنتوا بتنطقوا وتتكلموا برضو، هل حد وهو بينطق بيفكر الفك ده هيطلع فين وده هينزل فين ولا بيفصل أوتوماتيكلي؟
+
+سبحان الله، ربنا خلق المخ بتاعنا لما بنيجي نتعلم حاجة جديدة بيبقى عندنا مجهود فكري، بنحتاج نكون Attentive ومركزين علشان نشوف خطوات السلوك أو الوظيفة اللي بنعملها.
+<strong>Once بقى فيه Behavior repetitive repetitive، معنى كده إنه بقى عادة! بينتقل الـ Control بتاعه من الـ Cortex للـ Subcortical nuclei!</strong>
+علشان مش محتاجين نضغط على الـ Cortex في حاجات خلاص بقت بتتكرر بشكل أوتوماتيك.
+فبتتخزن في منطقة في المخ مسؤولة إنها تعمل <strong>Storing للـ Motor memory</strong>، وتبدأ بعد كده تنفذها أوتوماتيك.. فعشان كده الـ Basal ganglia مسؤولة عن الـ <strong>Automatic behavior!</strong>
+
+<strong>مثال الدكتور العبقري: السواقة والصلاة!</strong>
+كلنا بنعمل Automatic behavior؛ السواقة، لو حد بيسوق هيعرف إن إحنا بنسوق أوتوماتيك ما حدش بيفكر وهو بيعمل إيه.
+وأضرب لحضراتكم مثال: <strong>الصلاة!</strong>
+إحنا بنصلي أوتوماتيك! فممكن حد يخلص الصلاة وهو مش فاكر أنا عملت إيه! كل الصلاة عملتها من غير ما أفتكر أي حاجة، صح كده؟
+وده مش معناه إنها involuntary، ممكن ترجع تاني للـ Voluntary control وتتعدل بالتركيز، لكن الـ Memory بقت Stored جوة الـ Basal ganglia!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 2: Hypothalamus -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>⏰ 2. الـ Hypothalamus — الساعة البيولوجية، ودور العين، وليه مفيش حُفاظ زي الإمام البخاري دلوقتي؟</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الحاجة التانية المهمة جداً: <strong>الـ Hypothalamus</strong>.. دي أهم Area في التحكم في السلوك (Controlling behavior)، بتشتغل بـ Two pathways:
+
+• <strong>1. المسار المباشر (Direct pathway):</strong>
+إنها الـ Higher control للجهاز العصبي الذاتي (Autonomic nervous system)، فكل الوظائف الذاتية اللي بتخدم على السلوك الـ Hypothalamus مسؤولة عنها.
+والحاجة التانية المهمة جداً: <strong>الـ Circadian rhythm (الساعة البيولوجية ووظائف الليل والنهار):</strong>
+{وَجَعَلْنَا اللَّيْلَ لِبَاسًا * وَجَعَلْنَا النَّهَارَ مَعَاشًا}.
+جسمنا بيتفاعل مع الليل والنهار، فيه وظائف معينة لازم تحصل بالليل زي النوم والـ Brain regeneration والغدد، وفيه وظائف بتحصل بالنهار.
+
+<strong>إزاي بقى المخ بيميز بين الليل والنهار biologically؟</strong>
+<strong>العين!</strong> في أصل الخلقة بالليل ضلمة وبالنهار منور.. فالعين بتلقط النور، فنعرف إن النهار جه، والمفروض نصحى الفجر مع أول النهار نصلي ونستقبل اليوم فتنطلق وظائف جسمنا، وأول ما ييجي الليل نصلي العشاء وننام لأن الليل لباس.
+
+<strong>طب إيه اللي حصل في عصر الحداثة؟</strong>
+بقى فيه أنوار، أضاءت الليل! وبقينا ماسكين موبايلات بتطلع Light في وشنا طول الليل! فلخبطتلنا الـ Circadian rhythm وبقينا أضعف وأعصب وعندنا Sleep disorders!
+<strong>وعشان كده ما تلاقيش حُفاظ زي الإمام البخاري دلوقتي!</strong>
+ليه؟ لأن الذاكرة (Memory) بيحصلها تنظيم وترتيب وتثبيت أثناء النوم بالليل (During sleep in the night)! وإحنا بنسهر طول الليل، فمش هنحفظ.. هنحفظ إزاي وعندنا كل المشاكل دي؟!
+
+• <strong>2. المسار غير المباشر (Indirect pathway):</strong>
+من خلال التحكم في جهاز الغدد الصماء (Endocrine system). 
+المخ زي شركة: مجلس الإدارة هو الـ Cortex، ورئيس مجلس إدارة الغدد الصماء هو الـ Hypothalamus! شغال تحت إيده الـ Pituitary gland كمنفذ، والـ Pituitary بتشغل باقي غدد الجسم!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 3: Cerebellum -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🍷 3. المخيخ (Cerebellum) — تنسيق الحركة، وتطويحة السكران (Drunken Gait)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«المخيخ (Cerebellum) مسؤول عن تنسيق الحركات وتوازنها (Coordination of motor action)، وله علاقة بالـ Motor memory والـ Attention وأحياناً الـ Emotions.
+
+<strong>تطويحة السكران وعلاقتها بالمخيخ:</strong>
+حضراتكم عارفين إن اللي بيشرب خمرة بيمشي يطوّح، مظبوط؟
+أهو التطويحة ديت هي هياها التطويحة اللي بتحصل لو حد حصله Cerebellar affection! بنسميها في الطب <strong>Drunken gait (أو Ataxia gait)</strong>!
+ليه؟ لأن المخيخ شديد التأثر بالكحول، فلما حد بيشرب Alcohol بيحصل Inhibition للمخيخ، فيدخل فوراً في أعراض المخيخ وميعرفش يظبط توازنه ولا ينسق خطوته فيمشي يطوح زي السكران بالظبط!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 10 (NEWLY EXPANDED) -->
+            <div class="accordion-item open" data-category="endocrine">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">10</div>
+                        <div>
+                            <div class="accordion-title">جهاز الغدد الصماء والهرمونات والسلوك: الكورتيزول، الإستروجين، البرولاكتين، والأوكسيتوسين (حلب الجاموسة!)</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-blue">Slides 22-26 + تفريغ الإضافة</span>
+                                <span class="tag tag-amber">الكورتيزول وحبوب الامتحانات</span>
+                                <span class="tag tag-purple">ليه ربنا حط لذة في الجواز والخلفة؟</span>
+                                <span class="tag tag-rose">الجاموسة والأوكسيتوسين</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+
+                    <div class="slide-box">
+                        <div class="slide-badge">📑 المكتوب في الباور (Slides 22-26)</div>
+                        <p><strong>The Endocrine System & Behavior:</strong> Chemical communication network via bloodstream. Hormones act slower and last longer than neurotransmitters. Important hormones: Cortisol, Estrogen, Testosterone, Prolactin, Oxytocin, Thyroxine, Epinephrine.</p>
+                    </div>
+
+                    <!-- SUB 1: Cortisol -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>💊 1. الكورتيزول (Cortisol) — هرمون الستريس، وليه بيطلعلنا حبوب ويجيلنا برد أيام الامتحانات؟</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«الكورتيزول (Cortisol) هو الكورتيزون الطبيعي اللي في جسمنا:
+1- <strong>تنظيم المناعة:</strong> ربنا عامله عشان يعمل Regulation للمناعة؛ لأنه لو زاد بيعمل Suppression لجهاز المناعة عشان لو المناعة Hyperactive هتهاجم جسمنا وتبوظ الدنيا.
+2- <strong>ميتابوليزم الكربوهيدرات والطاقة:</strong> أثناء الـ Stress بنحتاج سكر وطاقة عشان نواجه الخطر، فالكورتيزول بيعدل الكربوهيدرات والدهون.. وعشان كده اللي بياخد كورتيزون كعلاج بيتخن ويحصله لخبطة في الميتابوليزم.
+
+<strong>الكورتيزول والسلوك وأيام الامتحانات:</strong>
+الكورتيزول بيطلع بكميات ضخمة أثناء الـ Stress (واحد من أهم الـ Stress hormones)..
+عشان كده تلاقونا أيام الامتحانات بيطلعلنا حبوب في وشنا، ويجيلنا دور برد وإنفلونزا، ونبقى عرضة للعدوى (Infection)! ليه؟ 
+لأن الكورتيزول الكتير مع توتر الامتحانات بيعمل <strong>Suppression للمناعة</strong> فبنبقى More liable to get infections!
+ولما بيتاخد بجرعات كبيرة كعلاج بيعمل أعراض نفسية؛ يدخل العيان في اكتئاب (Depression) أو ذهان (Psychosis)!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 2: Estrogen & Testosterone -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>❤️ 2. الإستروجين والتستوستيرون — الحكمة الإلهية في غاية الزواج والإنجاب وليه ربنا حاطط اللذة؟</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً في فلسفة الشهوة والإنجاب:</div>
+                                <div class="doctor-text">
+"«الإستروجين (Estradiol / Estrogen) هرمون أساسي في تنظيم الرغبة الجنسية (Sexual desire) خصوصاً عند الإناث.
+وده من حكمة الله عز وجل في الخلق: <strong>إن العلاقة دي ربنا خلقها لغاية واحدة أساسية هي الإنجاب!</strong>
+وما أحيط بها من لذة (Pleasure) فقط علشان يبقى عندنا Motivation إن إحنا نخلف ونجيب عيال!
+لأن فكرة الجواز والخلفة والمسؤولية لو فكرنا فيها بمخنا المجرد لوحدها: حاجة مقرفة ومزعجة ومكلفة جداً، ونجيب عيال نقرف فيهم ونصرف عليهم ونوجع قلبنا وخلاص!
+فلولا إن ربنا سبحانه وتعالى أحاط هذه المسؤولية الضخمة بلذة مش هنعملها ومش هنوجع قلبنا! فاللذة مش غاية في حد ذاتها، دي وسيلة لتحمل هذا العبء الثقيل!
+
+<strong>طب إيه اللي بيحصل بيولوجياً في الست (Cycle)؟</strong>
+في النصف الأول من الدورة الشهرية، حويصلة جراف (Graafian follicle) بتكبر وتطلع إستروجين كتير.. الإستروجين ده بيخلي الست More wanting وعندها رغبة، وبيخلي وشها مورق ونضر وMore attractive!
+يفضل يعلى لحد الـ <strong>Mid-cycle وقت التبويض (Ovulation)</strong>، البويضة بتقعد 24 ساعة وده بيكون الـ Peak بتاع الرغبة؛ لأن ده الوقت المهيأ للحمل!
+أول ما يحصل التبويض وتختفي الحويصلة، يقل الإستروجين فوراً، ويطلع مكانه البروجستيرون (Progesterone) من الـ Corpus luteum عشان يجهز الرحم لاستقبال الجنين، فتهدى الرغبة الجنسية خلاص لأن الغاية انتهت!
+
+<strong>طب والتستوستيرون (Testosterone)؟</strong>
+التستوستيرون موجود عندنا كلنا رجالة وستات، بس هو المسؤول عن الـ Baseline بتاع الرغبة.
+وعشان الرجالة عندهم تستوستيرون أعلى بكتير، فالرجالة بيبقوا More sexually excited ومشدودين أكتر للرغبة، وده الفرق بين التنظيم والتحفيز.»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 3: Prolactin -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🍼 3. البرولاكتين (Prolactin) — هرمون اللبن اللي بيخلي الست تغير البامبرز وتسهر بدون قرف!</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً في تغيير السلوك المذهل مع الرضاعة:</div>
+                                <div class="doctor-text">
+"«البرولاكتين (Prolactin) بيطلع من الغدة النخامية عشان يفرز اللبن (Milk secretion)، ومثبطه في المخ هو الدوبامين.
+أول ما الست تولد بيطلع البرولاكتين بكميات كبيرة، فيتكون اللبن.. بس الأهم من اللبن: إنه بيعمل <strong>Behavioral change عجيب جداً في المخ!</strong>
+
+حضراتكم دلوقتي لو اتعرض عليكم تغيروا لطفل صغير وتفضلوا سهرانين بيه طول الليل، هتعملوا إيه؟ هتحبوا تعملوا ده؟ مش طايقين! حاجة مقرفة ومزعجة جداً!
+<strong>Once بقت السيدة Lactating بترضع، فجأة ما بقاش عندها أي مشكلة خالص!</strong>
+البرولاكتين بيأثر على خلايا المخ ويـ Promote الـ <strong>Parenting</strong>، يخلي الست اللي كانت قرفانة تغير للأطفال قادرة إنها تغير لابنها دلوقتي حالاً وهي راضية ومبسوطة!
+ونفس ابنها ده لو بعد ما يكبر شوية وقفت الرضاعة، هترجع تقرف منه تاني! سبحان الله، مع الوظيفة البيولوجية السلوك بيتغير تماماً!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 4: Oxytocin -->
+                    <div class="sub-accordion open">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🐮 4. الأوكسيتوسين (Oxytocin) — هرمون الحب، وليه الولادة مبهجة رغم الألم؟ وحكاية حلب الجاموسة!</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور التلقائي اللذيذ: هرمون الحب والأحضان وحلب الجاموسة!</div>
+                                <div class="doctor-text">
+"«الأوكسيتوسين بيعمل Milk ejection (نزول اللبن) وبيعمل انقباضات الرحم في الولادة.
+عملية الولادة عملية مؤلمة جداً.. طب ليه الستات بيشتاقوا لتجربة الولادة ويحبوها؟ 
+لأن مع كل بلاء فيه لطف! <strong>اللطف هنا هو الأوكسيتوسين!</strong>
+الأوكسيتوسين ده هو <strong>هرمون الحب والحميمية (Love & Intimacy hormone)</strong>! فعلى الرغم من ألم الولادة، بيطلع الأوكسيتوسين يولد مشاعر حب جياشة وعاطفة رهيبة ناحية البيبي تخليها تستحمل وتنسى كل الوجع!
+
+<strong>سر التلامس الجلدي (Skin-to-skin touch):</strong>
+أي Skin-to-skin touch بيفرز أوكسيتوسين فوراً! 
+عشان كده أول ما البيبي يتولد بيحطوه على صدر أمه فوراً، ومجرد ما يلمسها ينزل اللبن بسبب الأوكسيتوسين! 
+وعشان كده الأحضان بين الصحاب، والتلامس بين الزوجين، بيولد مشاعر Intimacy وثقة اجتماعية (Social trust) وروابط قوية.
+والسيدة عائشة رضي الله عنها كانت تذكر قربها من النبي عليه الصلاة والسلام في الفراش وتلامس الجلد بالجلد لأنه خبرة لطيفة ترسخ في الذاكرة.
+
+<strong>حكاية حلب الجاموسة في الفلاحين:</strong>
+حضراتكم حد من قرية وشاف جاموسة بتتحلب؟ 
+هل أي حد معدي ينفع يدخل يحلب الجاموسة؟ ما ينفعش! الجاموسة ما بترضاش تتحلب لأي حد! 
+ليه؟ الجاموسة بتبص وتشوف مين اللي بيحلبها، <strong>لازم تكون بتحبه!</strong> أه والله! لو ما حبتوش مهما تشد في الضرع مش هتنزل نقطة لبن! 
+ما بتنزلش اللبن إلا لحد بتحبه.. ليه؟ عشان الأوكسيتوسين! 
+وتلاقوا الفلاح اللي بيحلبها بيقعد يملس عليها ويحننها عشان تفرز أوكسيتوسين وتنزل اللبن بالـ Skin-to-skin touch!»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUB 5: Thyroxine & Epinephrine -->
+                    <div class="sub-accordion">
+                        <div class="sub-header" onclick="toggleSubAccordion(this)">
+                            <span>🔥 5. الثيروكسين (Thyroxine) وهرمونات الخناقة (Epinephrine & Norepinephrine)</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="doctor-verbatim">
+                                <div class="doctor-badge">🎙️ كلام الدكتور نصاً:</div>
+                                <div class="doctor-text">
+"«<strong>الثيروكسين (Thyroxine):</strong>
+هو فتيل الحرق والوقود اللي بيشعل الـ Metabolic rate في الجسم كله:
+• <strong>زيادة الغدة (Thyrotoxicosis):</strong> حرق عالي جداً، تلاقي الشخص عصبي، بيتخانق، بيخس جداً على الرغم من إنه بياكل كتير وما بينامش!
+• <strong>نقص الغدة (Hypothyroidism):</strong> حرق بطيء جداً، تلاقي الشخص بطيء وكسول، ميال للنوم، وبيتخن على الرغم من إنه ملوش نفس ياكل، وعنده <em>Cognitive impairment</em> مش عارف يفكر ولا يركز!
+
+<strong>الإبينفرين والنورإبينفرين (Adrenaline & Noradrenaline):</strong>
+دول هرمونات الستريس والخناقة الفورية مع الكورتيزول؛ يزودوا ضربات القلب، يضيقوا الأوعية بتاعة الجهاز الهضمي (مش وقت هضم)، ويوسعوا الأوعية اللي رايحة للعضلات والمخ عشان تجري أو تتخانق!
+والمايسترو اللي بيدير الهرمونات دي كلها بتناغم هو <strong>الـ Hypothalamus تحت قيادة الـ Cortex</strong>.»"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 11 (UPDATED FULL Q&A BANK) -->
+            <div class="accordion-item open" data-category="questions">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">11</div>
+                        <div>
+                            <div class="accordion-title">بنك أسئلة الدكتور التفاعلية للطلبة بالعامية المصرية وإجاباتها بالحرف (25 سؤالاً شاملاً)</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-rose">أسئلة المحاضرة كاملة</span>
+                                <span class="tag tag-purple">مهمة جداً للامتحان والشفوي</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 16px; color: var(--text-muted); font-weight: 600;">كل سؤال رمّاه الدكتور على الطلبة في مدرج طب الأزهر مكتوب هنا بالعامية زي ما قاله بالظبط مع إجابته التلقائية:</p>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س1: تفتكروا موديول الـ Behavioral Sciences بيتعامل مع إيه؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "سلوك البشر، بس مش من حيث نوع السلوك ولا هو صح ولا غلط، ولكن من حيث العوامل (Factors) اللي بتؤثر في سلوك الإنسان وبتحركه والعمليات العقلية."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س2: ليه بنعتبر الطب النفسي أشرف وأعلى فروع الطب في الوجود؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن شرف العلم بشرف المعلوم؛ وأعلى حاجة بعد علوم الدين هو الإنسان، وأشرف ما في الإنسان عقله، فمش هنساوي بين اللي بيتعامل مع عقل الإنسان واللي بيتعامل مع الجهاز البولي أو الهضمي!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س3: هو العقل هو المخ؟ وإيه الوظائف العليا اللي بتميز الإنسان؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأ، العقل غير المخ؛ المخ بيعمل وظائف بنشترك فيها مع الحيوانات وفيه حيوانات أحسن مننا فيها، لكن العقل هو الوظائف العليا زي التفكير، والتحكم في الغرائز (المفروض يعني!)، والإدراك."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س4: مين قالكم إن الدوبامين ده بتاع السعادة؟ وهل هو هرمون أصلاً؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "الدوبامين مش هرمون السعادة ولا هرمون أصلاً، ده ناقل عصبي (Neurotransmitter) وبتاع اللذة مش السعادة؛ لأن السعادة حاجة معنوية بتخاطب الروح، أما اللذة فحاجة حسية وشهوانية."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س5: هل فيه حد دخل وقاس الدوبامين جوة مخ إنسان حي؟ وعرفنا الكلام ده منين؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأ ده ما حصلش ومش عارفين نعمله لحد دلوقتي! كل معلوماتنا جاية من أدلة غير مباشرة من الدراسات الدوائية وتأثير الأدوية بالصدفة."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س6: بنعرف منين الحتة في المخ المسؤولة عن السلوك والتاسك؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "بطريقتين: يا إما من إصابات وأورام المخ وفقدان الوظيفة (Loss of function)، يا إما من الدراسات الوظيفية أثناء أداء التاسك بالرنين الوظيفي (fMRI) لمعرفة الـ Hot areas والـ EEG لقياس كهربية المخ."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س7: إيه وظيفة الـ Basal Ganglia في السلوك؟ وإيه حكاية الكتابة على الكيبورد والصلاة؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "مسؤولة عن الـ Motor memory والـ Automatic behavior. لما سلوك يتكرر كتير يتحول لعادة وينتقل من الـ Cortex للـ Basal ganglia عشان يخفف الضغط على القشرة المخية، زي صوابعك على الكيبورد، وزي السواقة، وزي لما تخلص الصلاة وأنت مش فاكر عملت إيه لأنك صليت أوتوماتيك!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س8: إزاي المخ biologically بيميز الليل والنهار ويظبط الساعة البيولوجية؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "العين! العين بتلقط النور مع شروق النهار فيصحى الجسم مع الفجر، وبالليل الضلمة تحفز النوم، لكن أنوار الحداثة وشاشات الموبايلات لخبطت ساعتنا البيولوجية وعملت مشاكل نوم وضعفت الذاكرة."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س9: ليه ما بنلاقيش حُفاظ للقرآن والحديث زي الإمام البخاري في زماننا؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن الذاكرة وترتيب المعلومات بيحصل أثناء النوم بالليل (During sleep in the night)، وإحنا بنسهر طول الليل قدام الشاشات فالذاكرة اتلخبطت وما بقيناش بنعرف نحفظ زيهم!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س10: ليه شارب الخمر بيمشي يطوّح (Drunken gait)؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن الكحول بيعمل Inhibition للمخيخ (Cerebellum)، والمخيخ هو المسؤول عن توازن وتنسيق الحركات (Coordination)، فلما يتعطل يمشي يطوح وتجيله Ataxia gait."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س11: ليه بيطلعلنا حبوب ويجيلنا دور برد أيام امتحانات الكلية؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن توتر الامتحانات (Stress) بيفرز كورتيزول كتير جداً، والكورتيزول الكتير بيعمل كبت وتثبيط للمناعة (Immune suppression) فنبقى عرضة للميكروبات والعدوى!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س12: ليه ربنا حاطط لذة وشهوة في العلاقة الزوجية؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "الغاية من العلاقة هي الإنجاب فقط؛ ولولا أن ربنا أحاطها بلذة ومودة ما كانش حد هيستحمل قرف وخلفة ومصاريف وسهر العيال، فاللذة وسيلة وليست غاية في حد ذاتها."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س13: إيه اللي بيخلي الأم ترضى تسهر وتغير البامبرز للطفل بدون ما تقرف؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "هرمون البرولاكتين (Prolactin) بيعمل Behavioral change في المخ ويحفز مشاعر الأمومة (Parenting)، فتغير للبيبي وهي راضية، ولو وقفت رضاعة بعد ما يكبر ترجع تقرف تاني!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س14: إيه حكاية 'حلب الجاموسة' وهرمون الأوكسيتوسين؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "الجاموسة ما بترضاش تتحلب إلا للي بتحبه؛ لأن التلامس الحنين (Skin-to-skin touch) بيفرز أوكسيتوسين فينزل اللبن، ولو مش بتحبه مش هتفرز أوكسيتوسين ومش هتنزل نقطة لبن!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س15: إيه الفرق بين مريض زيادة الغدة الدرقية ومريض نقصها في السلوك والوزن؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "مريض الزيادة (Thyrotoxicosis) الحرق عنده نار، فياكل كتير ويخس ويكون عصبي وما بينامش. ومريض النقص (Hypothyroidism) الحرق نايم، فيتخن ويكون كسلان وبطيء وعنده ضعف في التركيز والتفكير."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س16: مريض الـ ADHD بيتحرك كتير، ليه بنديله دواء منبه (Stimulant)؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن مشكلته مش نشاط زيادة، مشكلته إن مراكز التثبيط والفرملة في المخ عنده نايمة (Hypoactive inhibition)، فبنديله منبه عشان ينشط مراكز التثبيط (Stimulate the inhibition) فيرجع يتحكم في نفسه!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س17: ليه مريض الفصام بعد ما بياخد دواء يقفل الدوبامين فترة بيرجع ينتكس ونحتاج نرفع الجرعة؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "بسبب الـ Up-regulation؛ الخلية من كتر ما قفلنا الريسبتورز بتاعتها بتبقى عطشانة وجعانة (Hypersensitive) وتقوم مصنعة ريسبتورز جديدة تتخطى بيها الدواء (Bypass)، فنضطر نرفع الجرعة عشان نقفل الجديد."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س18: إيه حكاية 'قفل الحنفية' بالـ Presynaptic Autoreceptors؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لما الناقل يفرز بزيادة ويهرب برة الشق العصبي زي المية لما تفرط في الصالة، بيمسك في مستقبلات ذاتية على الخلية المفرزة تقوم قافلة الحنفية ومبطلة تطلع دوبامين تاني، وبعض أدوية الاكتئاب بتقفل الحنفية دي عشان تزود الناقل."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س19: ليه علاج الطب النفسي عامل زي 'بدلة سمير غانم في المتزوجون'؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأنك كل ما تصلحها في حتة تضرب من حتة تانية! نصلح الدوبامين للفصام تقوم الحركة بايظة، ندي دواء مضاد كولين للحركة العيان يشتكي ويقول: بقينا بننسى!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س20: إيه دور الدوبامين في الـ Motivation؟ وإيه مثال 'حلة المحشي'؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "الدوبامين هو اللي بيديك الحماس لتوقع المكافأة (Expect reward). حلة المحشي بتاخد ساعات مجهود وحشو محشاية محشاية، ومحدش هيعمل كده إلا لو عنده حماس الدوبامين وتوقع لذة الأكل بعد ما تستوي!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س21: ليه مريض الاكتئاب بعد دواء السيروتونين يقول: 'ما عودتش بحزن بس ما عودتش بنبسط'؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن السيروتونين مش بيبسط، السيروتونين بس منظم للمود وبيشيل المشاعر السلبية ويمنع المزاج يقع، أما اللذة والبسط فبتاعة الدوبامين."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س22: ليه البلطجي في الخناقة بيبلع ترامادول مع نص شريط أبتريل (GABA) ويبقى شجاع وعنيف؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن الجرعة العالية جداً من الأبتريل بتثبط القشرة المخية العاقلة (Cortical suppression)، فلما تطير الفرملة العقلية تنطلق الغرائز الحيوانية البدائية العنيفة في النوى العميقة ويبقى مفيش خوف ولا تمييز!"
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س23: إيه هو التسمم الإثاري للجلوتامات؟ وإيه علاقته بالزهايمر؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "هو موت وتدمير الخلايا العصبية بسبب الإثارة المفرطة المستمرة بالجلوتامات (زي الصوت العالي اللي يدمر طبلة الودن)، وده اللي بيحصل في الزهايمر وبنعالجه بمضادات الـ NMDA."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س24: ليه بتوع الجيم بيصرخوا من الوجع بس مروحين مبسوطين؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "لأن الوجع العضلي الشديد بيفرز مسكنات أفيونية طبيعية (Endorphins) بتديهم تسكين للألم ونشوة ولذة عالية وتفتح شهيتهم للأكل بعد التمرين."
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <div class="question-header">❓ س25: إيه الفرق بين دوبامين الشلل الرعاش (Parkinson's) ودوبامين الفصام (Schizophrenia)؟</div>
+                        <div class="question-answer">
+                            <strong>إجابة الدكتور:</strong> "الاتنين دوبامين بس في مسارين مختلفين: الشلل الرعاش نقص وتلف في خلايا الدوبامين في الـ Substantia nigra (مسار الحركة)، أما الفصام فزيادة مفرطة في الدوبامين في الـ Limbic system (مسار الانفعالات والمشاعر)."
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 12 (EXPANDED METAPHORS) -->
+            <div class="accordion-item" data-category="metaphors">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrap">
+                        <div class="section-number">12</div>
+                        <div>
+                            <div class="accordion-title">قاموس تشبيهات وأمثلة الدكتور الشعبية التلقائية في المحاضرة (خلاصة الزتونة كاملة)</div>
+                            <div class="accordion-meta">
+                                <span class="tag tag-amber">أمثلة المحاضرة اللذيذة</span>
+                                <span class="tag tag-green">هتخليك تفتكر المنهج كله</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 16px; color: var(--text-muted); font-weight: 600;">دي التشبيهات العبقرية اللي قالها الدكتور عشان متنساش أي مصطلح طبي معقد:</p>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">📺 1. التلفزيون المكسور والعفريت (الاختزالية البيولوجية)</div>
+                        <p><strong>المعنى:</strong> الغربيين بيتعاملوا مع الإنسان كأنه تلفزيون نصلحه بسلك من جوة، ومبينكروش العفريت بس بينكروا الروح، وإحنا بنقول الإنسان جسد وروح.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🔌 2. الترانزستور في البوردة (الدوائر العصبية)</div>
+                        <p><strong>المعنى:</strong> خلايا المخ مش شغالة فرادى، دي دوائر عصبية متجمعة زي الترانزستورات في بوردة الأجهزة عشان تطلع سلوك بشري متناغم (In harmony).</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">⌨️ 3. الكتابة على الكيبورد والصلاة (Basal Ganglia Motor Memory)</div>
+                        <p><strong>المعنى:</strong> لما تتعلم حاجة القشرة المخية تركز، لما تتعود عليها تتنقل للنوى القاعدية وتبقى أوتوماتيك زي حركة صوابعك على الكيبورد، أو صلاتك اللي بتخلصها وأنت مش فاكر ركعت إزاي!</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🏢 4. مجلس إدارة الشركة ورئيس فرع الهرمونات (Cortex & Hypothalamus)</div>
+                        <p><strong>المعنى:</strong> القشرة المخية هي مجلس الإدارة الأعلى، والـ Hypothalamus هو رئيس مجلس إدارة قسم الغدد الصماء اللي بينفذ القرارات من خلال النخامية.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🍷 5. تطويحة السكران والمخيخ (Cerebellar Drunken Gait)</div>
+                        <p><strong>المعنى:</strong> شارب الخمر بيمشي يطوح لأن الكحول بيثبط المخيخ المسؤول عن التوازن، وهو نفس المشي اللي بيحصل لو عيان حصله مشكلة في المخيخ.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">👂 6. "يسد ودانه" (Down-regulation)</div>
+                        <p><strong>المعنى:</strong> لما تصوت في ودن حد بيسد ودنه، والخلية لما تلاقي دوبامين كتير بتسد ودانها وتلغي ريسبتورز عشان تحمي نفسها.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🚰 7. "قفل الحنفية" (Presynaptic Autoreceptors)</div>
+                        <p><strong>المعنى:</strong> لما الحنفية تفرط والمية تغرق الصالة بنجري نقفلها؛ والمستقبل الذاتي هو اللي بيقفل حنفية إفراز الناقل لما يفيض برة الشق العصبي.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🎭 8. "بدلة سمير غانم في المتزوجون" (Dopamine & ACh Balance)</div>
+                        <p><strong>المعنى:</strong> علاج النفسية كل ما تصلحه في حتة يضرب في حتة تانية؛ نقفل دوبامين للفصام تبوظ الحركة، ندي دواء للحركة العيان ينسى!</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🍲 9. "حلة المحشي" (Dopamine, Motivation & Reward)</div>
+                        <p><strong>المعنى:</strong> التعب الشديد بالساعات في حشو المحشي محتاج دافعية وتوقع مكافأة، وده شغل الدوبامين الأساسي.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🍼 10. تغيير البامبرز وسهر الليالي (البرولاكتين وتغيير السلوك)</div>
+                        <p><strong>المعنى:</strong> البنت قبل الولادة تقرف تغير لطفل، وبمجرد ما ترضع البرولاكتين يغير سلوك مخها فتحب ابنها وتغيرله وتسهر معاه وماتقرفش أبداً.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🐮 11. "حلب الجاموسة وهرمون الحب" (Oxytocin & Skin-to-skin Touch)</div>
+                        <p><strong>المعنى:</strong> الجاموسة مابتنزلش لبن إلا للي بتحبه لما يملس عليها ويحننها فيطلع أوكسيتوسين؛ والتلامس الجلدي هو مفتاح إفراز هرمون الحب والحميمية عند البشر كمان.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🔪 12. "خلطة البلطجية والأبتريل" (Cortical Disinhibition)</div>
+                        <p><strong>المعنى:</strong> الجرعات العالية جداً من مثبطات الجابا بتطير فرملة القشرة المخية، فتطلع الغرائز الحيوانية بلا عقل ولا خوف ويبقى البلطجي عنيف وشجاع ومتهور.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">👔 13. "المدير العام للشركة" (Prefrontal Executive Functions)</div>
+                        <p><strong>المعنى:</strong> الفص الجبهي هو المدير التنفيذي اللي بينظم الموارد، الأولويات، جدول اليوم، وحل المشكلات.</p>
+                    </div>
+
+                    <div class="metaphor-box">
+                        <div class="metaphor-badge">🧦 14. "الشراب الضايع وركن العربية" (Parietal vs Corpus Callosum)</div>
+                        <p><strong>المعنى:</strong> الفص الجداري متطور عند الرجالة عشان سواقة وركن العربيات والحروب، والجسم الثفني متطور عند الستات عشان الـ Multitasking وتفاصيل البيت ومكان الشراب الضايع!</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- /contentList -->
+
+    </div><!-- /container -->
+
+    <footer>
+        <p>تم إعداد هذا الملف التعليمي التفاعلي الشامل بالاعتماد التام على تفريغ المحاضرة والشرح العلمي للأستاذ الدكتور أيمن الحسيني مع كامل شرائح العرض التقديمي (PowerPoint).</p>
+        <p style="margin-top: 6px; font-size: 0.85rem;">موديول العلوم السلوكية (Behavioral Sciences) — طب الأزهر | معمول بالعامية المصرية اللذيذة عشان تثبت في الدماغ وماتتنسيش أبداً</p>
+    </footer>
+
+    <!-- Interactive JS Script -->
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            item.classList.toggle('open');
+        }
+
+        function toggleSubAccordion(header) {
+            const sub = header.parentElement;
+            sub.classList.toggle('open');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.accordion-item').forEach(item => item.classList.add('open'));
+            document.querySelectorAll('.sub-accordion').forEach(sub => sub.classList.add('open'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('open'));
+            document.querySelectorAll('.sub-accordion').forEach(sub => sub.classList.remove('open'));
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.getElementById('themeIcon').innerText = isDark ? '☀️' : '🌙';
+            document.getElementById('themeText').innerText = isDark ? 'الوضع النهاري' : 'الوضع الليلي';
+        }
+
+        function setFilter(category, chip) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+
+            const items = document.querySelectorAll('.accordion-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    const itemCat = item.getAttribute('data-category');
+                    if (itemCat === category || category === 'all') {
+                        item.style.display = 'block';
+                        item.classList.add('open');
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function filterContent() {
+            const term = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.accordion-item');
+
+            if (!term) {
+                items.forEach(item => item.style.display = 'block');
+                return;
+            }
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(term)) {
+                    item.style.display = 'block';
+                    item.classList.add('open');
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

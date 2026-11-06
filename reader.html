@@ -154,6 +154,27 @@
       text-align: center;
       color: #fca5a5;
     }
+
+    /* Mobile Responsiveness for Reader Header */
+    @media (max-width: 580px) {
+      .reader-header {
+        padding: 0 0.75rem;
+        height: 50px;
+      }
+      .viewer-container {
+        height: calc(100% - 50px);
+      }
+      .btn-back span, .btn-icon span {
+        display: none;
+      }
+      .btn-back, .btn-icon {
+        padding: 0.4rem 0.6rem;
+      }
+      .report-title {
+        font-size: 0.85rem;
+        max-width: 62vw;
+      }
+    }
   </style>
 </head>
 <body>

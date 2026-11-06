@@ -186,8 +186,14 @@
       <div class="spinner" id="loadingSpinner"></div>
       <p class="loading-text" id="loadingStatusText">جاري تحميل المحاضرة التفاعلية...</p>
       <div class="error-box" id="errorBox">
-        <p id="errorText">تعذر تحميل هذا التقرير.</p>
-        <button class="btn-back" style="margin-top:1rem;display:inline-flex;" onclick="window.location.reload()">إعادة المحاولة</button>
+        <h3 style="color:#f87171;margin-bottom:0.5rem;font-size:1.05rem;">تعذر تحميل التقرير</h3>
+        <p id="errorText" style="color:#cbd5e1;font-size:0.88rem;line-height:1.6;">تأكد من اتصال الإنترنت أو صحة الرابط.</p>
+        <div id="errorDetails" style="display:none;margin-top:0.75rem;padding:0.6rem;background:rgba(0,0,0,0.3);border-radius:6px;font-family:monospace;font-size:0.75rem;color:#94a3b8;word-break:break-all;text-align:left;direction:ltr;"></div>
+        <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+          <button class="btn-back" type="button" onclick="window.location.reload()">🔄 إعادة المحاولة</button>
+          <a id="btnDirectOpen" href="#" target="_blank" rel="noopener noreferrer" class="btn-back" style="display:none;">🔗 فتح الملف الأصلي</a>
+          <a href="index.html" class="btn-back" style="background:rgba(255,255,255,0.08);color:#e2e8f0;border-color:rgba(255,255,255,0.2);">🏠 الموقع الرئيسي</a>
+        </div>
       </div>
     </div>
 
@@ -207,6 +213,8 @@
       const statusText = document.getElementById('loadingStatusText');
       const errorBox = document.getElementById('errorBox');
       const errorText = document.getElementById('errorText');
+      const errorDetails = document.getElementById('errorDetails');
+      const btnDirectOpen = document.getElementById('btnDirectOpen');
       const btnFullscreen = document.getElementById('btnToggleFullscreen');
 
       if (titleElem) titleElem.textContent = title;
@@ -220,32 +228,129 @@
         return;
       }
 
-      // If it's a relative path to reports/
-      if (src.startsWith('reports/') || (!src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('/'))) {
-        src = src.replace(/^\.\.\//, '');
+      // Repair localhost URLs if opened on a mobile device or other host
+      if (src.includes('localhost:3000') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+        src = src.replace('http://localhost:3000', 'https://yazeedhaniiiiii.github.io/psycho-404');
       }
 
-      // Fetch HTML text and inject as Blob URL to guarantee text/html execution in all browsers
-      fetch(src)
-        .then((response) => {
-          if (!response.ok) throw new Error('HTTP ' + response.status + ' - ' + response.statusText);
-          return response.text();
-        })
-        .then((htmlContent) => {
-          const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-          const blobUrl = URL.createObjectURL(blob);
-          frame.src = blobUrl;
-          frame.onload = () => {
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 300);
-          };
+      // Enable direct open button if student needs raw fallback
+      if (btnDirectOpen) {
+        btnDirectOpen.href = src;
+        btnDirectOpen.style.display = 'inline-flex';
+      }
+
+      // Build prioritized list of candidate URLs to fetch
+      const candidates = [];
+
+      if (src.startsWith('http://') || src.startsWith('https://')) {
+        candidates.push(src);
+        if (src.includes('yazeedhaniiiiii.github.io/psycho-404/')) {
+          const rel = src.split('yazeedhaniiiiii.github.io/psycho-404/')[1];
+          if (rel) {
+            candidates.push(rel.replace(/^\.?\//, ''));
+            candidates.push('assets/' + rel.replace(/^\.?\//, ''));
+          }
+        }
+      } else {
+        const clean = src.replace(/^\.?\//, '');
+        candidates.push(clean);
+        if (!clean.startsWith('assets/')) {
+          candidates.push('assets/' + clean);
+        }
+        candidates.push(`https://yazeedhaniiiiii.github.io/psycho-404/${clean}`);
+      }
+
+      // If Lecture 01, add dedicated cloud fallbacks
+      if (src.includes('01') || src.toLowerCase().includes('biological')) {
+        candidates.push('https://dniewruwrswlgbatvnfk.supabase.co/storage/v1/object/public/lecture-reports/01/biological-bases-of-behaviour.html');
+        candidates.push('https://dniewruwrswlgbatvnfk.supabase.co/functions/v1/serve-report?lecture=1');
+      }
+
+      // Deduplicate candidates
+      const uniqueCandidates = Array.from(new Set(candidates));
+
+      // Sequential fetch with multi-source fallback
+      async function fetchHtmlWithFallback(urls) {
+        let lastError = null;
+        for (const url of urls) {
+          try {
+            const res = await fetch(url);
+            if (res.ok) {
+              return await res.text();
+            }
+            lastError = new Error(`HTTP ${res.status} (${res.statusText}) from ${url}`);
+          } catch (err) {
+            lastError = err;
+          }
+        }
+        throw lastError || new Error('All candidate URLs failed to load');
+      }
+
+      function renderHtml(htmlContent) {
+        let rendered = false;
+
+        // Method 1: srcdoc (Best compatibility with sandboxed iframes on Safari/Chrome/Firefox)
+        try {
+          frame.srcdoc = htmlContent;
+          rendered = true;
+        } catch (e1) {
+          console.warn('srcdoc failed, attempting Blob URL:', e1);
+        }
+
+        // Method 2: Blob URL
+        if (!rendered) {
+          try {
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            frame.src = URL.createObjectURL(blob);
+            rendered = true;
+          } catch (e2) {
+            console.warn('Blob URL failed, attempting contentDocument.write:', e2);
+          }
+        }
+
+        // Method 3: contentDocument.write
+        if (!rendered) {
+          try {
+            const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
+            if (doc) {
+              doc.open();
+              doc.write(htmlContent);
+              doc.close();
+              rendered = true;
+            }
+          } catch (e3) {
+            console.error('All iframe rendering methods failed:', e3);
+          }
+        }
+
+        // Smoothly hide loading overlay on frame load
+        frame.onload = () => {
+          overlay.style.opacity = '0';
+          setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        };
+
+        // Fallback timer: ensure overlay disappears after 900ms even if iframe load event is suppressed
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        }, 900);
+      }
+
+      // Execute fetch
+      fetchHtmlWithFallback(uniqueCandidates)
+        .then((html) => {
+          renderHtml(html);
         })
         .catch((err) => {
           console.error('Reader load failed:', err);
           spinner.style.display = 'none';
           statusText.style.display = 'none';
           errorBox.style.display = 'block';
-          errorText.textContent = 'تعذر تحميل التقرير. تأكد من اتصال الإنترنت أو صحة الرابط المرفوع.';
+          errorText.textContent = 'تعذر تحميل المحاضرة التفاعلية. يمكنك فتح الملف الأصلي مباشرة أو إعادة المحاولة.';
+          if (errorDetails) {
+            errorDetails.style.display = 'block';
+            errorDetails.textContent = `Error: ${err?.message || err}\nRequested src: ${src}\nHost: ${window.location.host}`;
+          }
         });
 
       // Fullscreen Toggle

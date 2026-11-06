@@ -371,8 +371,14 @@ class AdminApp {
   getReportShareableUrl(rep) {
     if (!rep || !rep.url) return '';
     const origin = window.location.origin;
-    const basePath = window.location.pathname.replace(/\/admin(\/.*)?$/, '').replace(/\/$/, '');
-    const siteRoot = `${origin}${basePath}`;
+    let siteRoot;
+    // When running locally on PC or via file://, generate the public live URL so links shared with students work anywhere
+    if (!origin || origin === 'null' || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      siteRoot = 'https://yazeedhaniiiiii.github.io/psycho-404';
+    } else {
+      const basePath = window.location.pathname.replace(/\/admin(\/.*)?$/, '').replace(/\/$/, '');
+      siteRoot = `${origin}${basePath}`;
+    }
 
     const isHtml = (/\.html?(\?.*)?$/i.test(rep.url) || rep.url.includes('/lecture-reports/'));
     if (!isHtml) {

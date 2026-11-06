@@ -368,6 +368,72 @@ class AdminApp {
   // ------------------------------------------------------------------------
   // Section 4: Reports Render (9 Independent Slots Matching course-data.js)
   // ------------------------------------------------------------------------
+  getReportShareableUrl(rep) {
+    if (!rep || !rep.url) return '';
+    const origin = window.location.origin;
+    const basePath = window.location.pathname.replace(/\/admin(\/.*)?$/, '').replace(/\/$/, '');
+    const siteRoot = `${origin}${basePath}`;
+
+    const isHtml = (/\.html?(\?.*)?$/i.test(rep.url) || rep.url.includes('/lecture-reports/'));
+    if (!isHtml) {
+      return rep.url.startsWith('http') ? rep.url : `${siteRoot}/${rep.url.replace(/^\.?\//, '')}`;
+    }
+
+    let sourceUrl = rep.url;
+    if (!sourceUrl.startsWith('http://') && !sourceUrl.startsWith('https://')) {
+      sourceUrl = `${siteRoot}/${sourceUrl.replace(/^\.?\//, '')}`;
+    }
+
+    return `${siteRoot}/assets/reader.html?src=${encodeURIComponent(sourceUrl)}&title=${encodeURIComponent(rep.lectureTitle)}`;
+  }
+
+  async copyReportLink(index) {
+    const rep = this.data.reports[index];
+    if (!rep || !rep.url) return;
+    const shareableUrl = this.getReportShareableUrl(rep);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(shareableUrl);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = shareableUrl;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+      this.showToast(`تم نسخ رابط مشاركة "${rep.lectureTitle}" بنجاح! جاهز للإرسال للطلاب.`);
+    } catch (err) {
+      console.error('Clipboard copy failed:', err);
+      prompt('انسخ الرابط التالي:', shareableUrl);
+    }
+  }
+
+  async copyDirectUrl(index) {
+    const rep = this.data.reports[index];
+    if (!rep || !rep.url) return;
+    const origin = window.location.origin;
+    const basePath = window.location.pathname.replace(/\/admin(\/.*)?$/, '').replace(/\/$/, '');
+    const siteRoot = `${origin}${basePath}`;
+    const directUrl = rep.url.startsWith('http') ? rep.url : `${siteRoot}/${rep.url.replace(/^\.?\//, '')}`;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(directUrl);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = directUrl;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+      this.showToast('تم نسخ الرابط المباشر للملف (Storage URL) بنجاح.');
+    } catch (err) {
+      console.error('Clipboard copy failed:', err);
+      prompt('انسخ الرابط التالي:', directUrl);
+    }
+  }
+
   renderReports() {
     const grid = document.getElementById('reportsCardsGrid');
     if (!grid) return;
@@ -384,24 +450,43 @@ class AdminApp {
             : (rep.url.startsWith('http') || rep.url.startsWith('/') || rep.url.startsWith('../') ? rep.url : '../' + rep.url))
         : '';
       const currentLink = hasReport
-        ? `<a href="${this.escapeHtml(reportTargetUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open current report</a>`
+        ? `<a href="${this.escapeHtml(reportTargetUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open preview</a>`
         : '';
+      const shareableLink = hasReport ? this.getReportShareableUrl(rep) : '';
 
       return `
         <article class="media-item-card report-upload-card">
           <div class="media-item-details">
-            <span class="badge badge-primary">Lecture ${this.escapeHtml(rep.number)}</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <span class="badge badge-primary">Lecture ${this.escapeHtml(rep.number)}</span>
+              <button class="btn btn-secondary btn-sm" type="button" onclick="adminApp.openEditReportModal(${idx})" title="Edit details" style="padding: 0.2rem 0.55rem; font-size: 0.75rem;">
+                ⚙️ Edit
+              </button>
+            </div>
             <h3 class="media-file-name">${this.escapeHtml(rep.lectureTitle)}</h3>
             <p class="report-upload-status">${status}</p>
             ${rep.description ? `<p class="report-upload-description">${this.escapeHtml(rep.description)}</p>` : ''}
+            
+            ${hasReport ? `
+              <div class="report-share-box" style="margin: 0.75rem 0; padding: 0.65rem 0.75rem; background: rgba(40,123,255,0.08); border: 1px solid rgba(40,123,255,0.25); border-radius: 8px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:0.4rem;">
+                  <span style="font-size:0.76rem; font-weight:700; color:#65d9ff;">🔗 رابط مشاركة المحاضرة للطلاب:</span>
+                  <button class="btn btn-sm" type="button" onclick="adminApp.copyReportLink(${idx})" style="background:#287bff; color:#fff; font-size:0.75rem; padding:0.25rem 0.65rem; border-radius:6px; font-weight:bold; cursor:pointer; border:none;">
+                    نسخ الرابط 📋
+                  </button>
+                </div>
+                <input type="text" readonly value="${this.escapeHtml(shareableLink)}" onclick="this.select()" style="width:100%; font-size:0.75rem; background:rgba(16,24,39,0.7); border:1px solid rgba(255,255,255,0.1); border-radius:5px; color:#cbd5e1; padding:0.35rem 0.5rem; font-family:var(--font-family-mono); text-overflow:ellipsis;">
+              </div>
+            ` : ''}
+
             <input type="file" id="reportFile-${idx}" accept=".html,text/html" hidden onchange="adminApp.uploadReport(${idx}, this.files && this.files[0])">
-            <div class="report-upload-actions">
+            <div class="report-upload-actions" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
               ${currentLink}
               <button class="btn btn-primary btn-sm" type="button" onclick="document.getElementById('reportFile-${idx}').click()">
                 ${hasReport ? 'Replace HTML' : 'Choose HTML file'}
               </button>
             </div>
-            <p class="report-upload-hint">HTML only · Up to 10 MB · Opens from the student site</p>
+            <p class="report-upload-hint">HTML only · Up to 10 MB · Opens seamlessly in reader</p>
           </div>
         </article>
       `;
@@ -437,7 +522,7 @@ class AdminApp {
       rep.status = 'published';
       await window.PSYCHO404_DB.saveCategoryItem(rep, 'cat-reports');
       this.renderReports();
-      this.showToast(`HTML report for Lecture ${rep.number} is ready on the student site.`);
+      this.showToast(`HTML report for Lecture ${rep.number} uploaded! Shareable student link is ready.`);
     } catch (error) {
       console.error('Report upload failed:', error);
       alert(error?.message || 'Could not upload this report. Please try again.');
@@ -447,15 +532,39 @@ class AdminApp {
 
   openEditReportModal(index) {
     const rep = this.data.reports[index];
+    const shareableUrl = rep.url ? this.getReportShareableUrl(rep) : '';
+    const hasReport = Boolean(rep.url && rep.url.trim());
+
     document.getElementById('modalTitle').textContent = `Reports: Module ${rep.number} - ${rep.lectureTitle}`;
     document.getElementById('modalBody').innerHTML = `
       <div class="form-group">
         <label class="form-label">Module Name</label>
         <input type="text" class="form-control" value="${rep.lectureTitle}" disabled style="opacity:0.75; padding-left:1rem;">
       </div>
+
+      ${hasReport ? `
+        <div class="form-group" style="background: rgba(40,123,255,0.08); padding: 0.85rem; border-radius: 8px; border: 1px solid rgba(40,123,255,0.25);">
+          <label class="form-label" style="color: #65d9ff; font-weight: 700; display:flex; justify-content:space-between; align-items:center;">
+            <span>🔗 رابط مشاركة المحاضرة للطلاب (قارئ الويب)</span>
+            <button class="btn btn-sm" type="button" onclick="adminApp.copyReportLink(${index})" style="background:#287bff; color:#fff; font-size:0.75rem; padding:0.2rem 0.6rem; border-radius:4px; border:none; cursor:pointer;">
+              نسخ الرابط 📋
+            </button>
+          </label>
+          <input type="text" class="form-control" readonly value="${this.escapeHtml(shareableUrl)}" onclick="this.select()" style="font-family:var(--font-family-mono); font-size:0.8rem; background:rgba(16,24,39,0.9);">
+          <small style="color: #94a3b8; font-size:0.75rem; display:block; margin-top:0.35rem;">هذا هو الرابط التفاعلي الكامل المخصص لإرساله للطلاب على تليجرام أو واتساب.</small>
+        </div>
+      ` : ''}
+
       <div class="form-group">
-        <label class="form-label">Report Destination URL (Telegram / Audio / PDF)</label>
-        <input type="url" class="form-control" id="repUrlInput" value="${rep.url || ''}" placeholder="https://t.me/psycho404public/..." style="padding-left:1rem; font-family:var(--font-family-mono);">
+        <label class="form-label">Report Destination URL (Direct File / Storage / External)</label>
+        <div style="display:flex; gap:0.5rem;">
+          <input type="url" class="form-control" id="repUrlInput" value="${rep.url || ''}" placeholder="assets/reports/... or https://..." style="padding-left:1rem; font-family:var(--font-family-mono); flex:1;">
+          ${hasReport ? `
+            <button class="btn btn-secondary btn-sm" type="button" onclick="adminApp.copyDirectUrl(${index})" title="Copy direct file URL" style="white-space:nowrap;">
+              نسخ المباشر 📋
+            </button>
+          ` : ''}
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">Report Label / Description</label>

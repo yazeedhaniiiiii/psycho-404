@@ -46,6 +46,7 @@ class AdminApp {
     this.renderFreeLectures();
     this.renderHomepageEditor();
     this.renderMediaLibrary();
+    this.updateSidebarCounts();
   }
 
   async saveToSupabase(save, successMessage) {
@@ -145,7 +146,7 @@ class AdminApp {
       totalActiveResources += this.getActiveResourceCount(lec);
     });
 
-    const publishedQuickVids = this.data.quickVideos.filter(v => v.status === 'published').length;
+    const publishedQuickVids = this.data.quickVideos.filter(v => (v.status === 'published' && v.videoUrl)).length;
 
     const statLecturesEl = document.getElementById('statTotalLectures');
     const statResourcesEl = document.getElementById('statTotalResources');
@@ -159,7 +160,20 @@ class AdminApp {
     if (statQuickVidsEl) {
       statQuickVidsEl.innerHTML = `${publishedQuickVids} <span style="font-size:1.1rem; color:var(--text-muted); font-weight:500;">/ ${this.data.quickVideos.length}</span>`;
     }
-    if (statFlashcardsEl) statFlashcardsEl.textContent = this.data.stats.notebookLmDecks;
+    if (statFlashcardsEl) statFlashcardsEl.textContent = totalLectures * 2;
+
+    const statLecFooter = document.getElementById('statLecturesFooterText');
+    if (statLecFooter) statLecFooter.textContent = `• ${totalLectures} Course Modules`;
+    const statResActive = document.getElementById('statResourcesActiveText');
+    if (statResActive) statResActive.textContent = `${totalActiveResources} Active`;
+    const statResFooter = document.getElementById('statResourcesFooterText');
+    if (statResFooter) statResFooter.textContent = `• ${(totalLectures * 7) - totalActiveResources} Empty Slots`;
+    const statFcFooter = document.getElementById('statFlashcardsFooterText');
+    if (statFcFooter) statFcFooter.textContent = `${totalLectures} Maps + ${totalLectures} Cards`;
+    const statQvPub = document.getElementById('statQuickVideosPublishedText');
+    if (statQvPub) statQvPub.textContent = `${publishedQuickVids} Published`;
+    const statQvFooter = document.getElementById('statQuickVideosFooterText');
+    if (statQvFooter) statQvFooter.textContent = `• ${this.data.quickVideos.length - publishedQuickVids} Pending Slots`;
 
     // 2. Render Audit Matrix Table (No fake activities)
     const tbody = document.getElementById('overviewActivityTbody');
@@ -229,16 +243,146 @@ class AdminApp {
           </td>
           <td style="font-family:var(--font-family-mono); font-size:0.8rem; color:var(--text-muted);">${lec.lastUpdated}</td>
           <td>
-            <div class="table-actions">
-              <button class="btn btn-secondary btn-sm" onclick="adminApp.openEditLectureModal(${idx})">
+            <div class="table-actions" style="display:flex; gap:0.4rem; align-items:center;">
+              <button class="btn btn-secondary btn-sm" onclick="adminApp.openEditLectureModal(${idx})" title="Edit Module Resources">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                <span>Edit Resources</span>
+                <span>Edit</span>
+              </button>
+              <button class="btn btn-sm" type="button" onclick="adminApp.confirmDeleteLecture(${idx})" title="Delete Module" style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); color:#f87171; padding:0.35rem 0.6rem; display:inline-flex; align-items:center; gap:0.3rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                <span>Delete</span>
               </button>
             </div>
           </td>
         </tr>
       `;
     }).join('');
+  }
+
+  openAddLectureModal() {
+    const numbers = (this.data.lectures || [])
+      .map(l => parseInt(l.number, 10))
+      .filter(n => !isNaN(n));
+    const nextNum = numbers.length > 0 ? Math.max(...numbers) + 1 : 1;
+    const formattedNext = String(nextNum).padStart(2, '0');
+
+    document.getElementById('modalTitle').textContent = 'Add New Course Lecture';
+    const modalBody = document.getElementById('modalBody');
+
+    modalBody.innerHTML = `
+      <div style="background: rgba(40,123,255,0.08); border: 1px solid rgba(40,123,255,0.25); border-radius: 8px; padding: 0.85rem; margin-bottom: 1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; color:#65d9ff; font-weight:700; font-size:0.85rem; margin-bottom:0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>Auto-Provisioned Across All Sections</span>
+        </div>
+        <p style="font-size:0.78rem; color:#cbd5e1; margin:0; line-height:1.4;">
+          Creating this lecture will automatically generate dedicated slots in: <strong>Lectures</strong>, <strong>Notes</strong>, <strong>HTML Reports</strong>, <strong>Mind Maps</strong>, <strong>Flashcards</strong>, and <strong>Quick Videos</strong>. (Free Lectures remains independent).
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 100px 1fr; gap:0.75rem; margin-bottom:0.75rem;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Number</label>
+          <input type="number" class="form-control" id="addLectureNumber" min="1" max="99" value="${nextNum}" style="text-align:center; font-weight:700;">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Lecture Title *</label>
+          <input type="text" class="form-control" id="addLectureTitle" placeholder="e.g. Clinical Assessment & Diagnosis" style="padding-left:0.85rem;">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:0.85rem;">
+        <label class="form-label">Badge / Subtitle</label>
+        <input type="text" class="form-control" id="addLectureBadge" value="Lecture ${formattedNext}" placeholder="e.g. Lecture ${formattedNext}" style="padding-left:0.85rem;">
+      </div>
+
+      <div style="border-top: 1px solid var(--border-subtle); padding-top:0.75rem; margin-top:0.5rem;">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">Initial Resource Links (Optional - can be added later):</span>
+        <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">
+          <input type="url" class="form-control" id="addResPpt" placeholder="PPT / PDF Slides URL (optional)" style="font-size:0.8rem; font-family:var(--font-family-mono); padding-left:0.75rem;">
+          <input type="url" class="form-control" id="addResDoctors" placeholder="Doctors' Explanations URL (Telegram/Web, optional)" style="font-size:0.8rem; font-family:var(--font-family-mono); padding-left:0.75rem;">
+          <input type="url" class="form-control" id="addResNotes" placeholder="Notes URL (Telegram/PDF, optional)" style="font-size:0.8rem; font-family:var(--font-family-mono); padding-left:0.75rem;">
+          <input type="url" class="form-control" id="addResMindmaps" placeholder="Mind Map URL (NotebookLM/Drive, optional)" style="font-size:0.8rem; font-family:var(--font-family-mono); padding-left:0.75rem;">
+          <input type="url" class="form-control" id="addResFlashcards" placeholder="Flashcards URL (NotebookLM, optional)" style="font-size:0.8rem; font-family:var(--font-family-mono); padding-left:0.75rem;">
+        </div>
+      </div>
+    `;
+
+    document.getElementById('modalSaveBtn').onclick = () => {
+      const numInput = document.getElementById('addLectureNumber');
+      const titleInput = document.getElementById('addLectureTitle');
+      const badgeInput = document.getElementById('addLectureBadge');
+
+      const numVal = parseInt(numInput.value, 10);
+      const titleVal = titleInput.value.trim();
+      const badgeVal = badgeInput.value.trim() || `Lecture ${String(numVal).padStart(2, '0')}`;
+
+      if (isNaN(numVal) || numVal < 1 || numVal > 99) {
+        alert('Please enter a valid lecture number between 1 and 99.');
+        return;
+      }
+      if (!titleVal) {
+        alert('Please enter a title for the lecture.');
+        titleInput.focus();
+        return;
+      }
+
+      const exists = (this.data.lectures || []).some(l => parseInt(l.number, 10) === numVal);
+      if (exists) {
+        alert(`Lecture #${numVal} already exists! Please choose another number.`);
+        return;
+      }
+
+      const pptUrl = document.getElementById('addResPpt').value.trim();
+      const doctorsUrl = document.getElementById('addResDoctors').value.trim();
+      const notesUrl = document.getElementById('addResNotes').value.trim();
+      const mindmapsUrl = document.getElementById('addResMindmaps').value.trim();
+      const flashcardsUrl = document.getElementById('addResFlashcards').value.trim();
+
+      const payload = {
+        number: numVal,
+        title: titleVal,
+        badge: badgeVal,
+        resources: {
+          ppt: pptUrl,
+          doctors: doctorsUrl,
+          notes: notesUrl,
+          mindmaps: mindmapsUrl,
+          flashcards: flashcardsUrl
+        }
+      };
+
+      this.closeModal();
+      this.saveToSupabase(
+        () => window.PSYCHO404_DB.createLecture(payload),
+        `Lecture ${String(numVal).padStart(2, '0')}: "${titleVal}" created successfully across all sections!`
+      );
+    };
+
+    this.openModal();
+  }
+
+  confirmDeleteLecture(lectureIndex) {
+    const lec = this.data.lectures[lectureIndex];
+    if (!lec) return;
+
+    const confirmed = confirm(
+      `Are you sure you want to delete Lecture ${lec.number}: "${lec.title}"?\n\n` +
+      `This will permanently remove it from:\n` +
+      `• Course Lectures & Accordions\n` +
+      `• Notes & Summaries\n` +
+      `• Interactive HTML Reports\n` +
+      `• Mind Maps & Flashcards\n` +
+      `• Quick Videos\n\n` +
+      `Are you sure you want to proceed?`
+    );
+
+    if (confirmed) {
+      this.saveToSupabase(
+        () => window.PSYCHO404_DB.deleteLecture(lec.dbId || lec.id, lec.number),
+        `Lecture ${lec.number} deleted successfully!`
+      );
+    }
   }
 
   openEditLectureModal(lectureIndex) {
@@ -1025,6 +1169,35 @@ class AdminApp {
     downloadAnchor.click();
     downloadAnchor.remove();
     this.showToast("Exported course-data-backup.json successfully!");
+  }
+
+  // ------------------------------------------------------------------------
+  // Dynamic Sidebar Badges & Count Synchronizer
+  // ------------------------------------------------------------------------
+  updateSidebarCounts() {
+    if (!this.data) return;
+    const lecCount = this.data.lectures ? this.data.lectures.length : 0;
+    const reportsCount = this.data.reports ? this.data.reports.length : lecCount;
+    const quickVidsCount = this.data.quickVideos ? this.data.quickVideos.length : lecCount;
+    const publishedVids = (this.data.quickVideos || []).filter(v => (v.status === 'published' && v.videoUrl)).length;
+    const freePartsCount = (this.data.freeLectures && this.data.freeLectures.parts) ? this.data.freeLectures.parts.length : 3;
+
+    const setBadge = (viewId, text) => {
+      const link = document.querySelector(`.sidebar-link[data-view="${viewId}"] .sidebar-count-badge`);
+      if (link) link.textContent = text;
+    };
+
+    setBadge('view-lectures', String(lecCount));
+    setBadge('view-notes', String(lecCount));
+    setBadge('view-reports', String(reportsCount));
+    setBadge('view-flashcards', String(lecCount * 2));
+    setBadge('view-quickvids', `${publishedVids} / ${quickVidsCount}`);
+    setBadge('view-freelectures', String(freePartsCount));
+
+    const subtitle = document.getElementById('lecturesViewSubtitle');
+    if (subtitle) {
+      subtitle.textContent = `Configure all ${lecCount} primary course modules and their 7 dedicated resources.`;
+    }
   }
 
   // ------------------------------------------------------------------------

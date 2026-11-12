@@ -782,6 +782,15 @@
 
     const lectures = window.COURSE_DATA.courseLectures;
 
+    // Dynamically update modules count badges/buttons
+    const heroBtn = document.getElementById('hero-modules-btn-text');
+    if (heroBtn) heroBtn.textContent = `View ${lectures.length} Course Modules`;
+
+    const subtitle = document.getElementById('lectures-section-subtitle');
+    if (subtitle) {
+      subtitle.textContent = `${lectures.length} comprehensive modules. Click any lecture to expand and explore all seven interactive resource materials.`;
+    }
+
     container.innerHTML = lectures
       .map((lecture, idx) => {
         const isFirst = idx === 0; // Optionally keep first open or closed

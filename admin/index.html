@@ -249,8 +249,9 @@
               <h2>Dashboard Overview</h2>
               <p>Welcome back, Yazeed. Here is the operational summary of PSYCHO 404.</p>
             </div>
-            <div style="display:flex; gap:0.5rem;">
-              <button class="btn btn-primary btn-sm" onclick="adminApp.navigate('view-lectures')">Manage Lectures</button>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="adminApp.navigate('view-lectures')">Manage Lectures</button>
+              <button class="btn btn-primary btn-sm" onclick="adminApp.openAddLectureModal()">+ Add New Lecture</button>
             </div>
           </div>
 
@@ -266,7 +267,7 @@
               <div class="stat-value" id="statTotalLectures">9</div>
               <div class="stat-footer">
                 <span class="stat-trend-up">100% Curriculum</span>
-                <span>• 9 Course Modules</span>
+                <span id="statLecturesFooterText">• 9 Course Modules</span>
               </div>
             </div>
 
@@ -279,8 +280,8 @@
               </div>
               <div class="stat-value" id="statTotalResources">52 <span style="font-size:1.1rem; color:var(--text-muted); font-weight:500;">/ 63</span></div>
               <div class="stat-footer">
-                <span class="stat-trend-up">52 Active</span>
-                <span>• 11 Empty Slots</span>
+                <span class="stat-trend-up" id="statResourcesActiveText">52 Active</span>
+                <span id="statResourcesFooterText">• 11 Empty Slots</span>
               </div>
             </div>
 
@@ -293,7 +294,7 @@
               </div>
               <div class="stat-value" id="statFlashcards">18</div>
               <div class="stat-footer">
-                <span class="stat-trend-up">9 Maps + 9 Cards</span>
+                <span class="stat-trend-up" id="statFlashcardsFooterText">9 Maps + 9 Cards</span>
                 <span>• Active Recall Links</span>
               </div>
             </div>
@@ -307,8 +308,8 @@
               </div>
               <div class="stat-value" id="statQuickVideos">4 <span style="font-size:1.1rem; color:var(--text-muted); font-weight:500;">/ 9</span></div>
               <div class="stat-footer">
-                <span class="stat-trend-up">4 Published</span>
-                <span>• 5 Pending Slots</span>
+                <span class="stat-trend-up" id="statQuickVideosPublishedText">4 Published</span>
+                <span id="statQuickVideosFooterText">• 5 Pending Slots</span>
               </div>
             </div>
           </div>
@@ -382,11 +383,15 @@
 
         <!-- SECTION 2: LECTURES MANAGEMENT -->
         <section class="admin-view" id="view-lectures">
-          <div class="view-header">
+          <div class="view-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
             <div class="view-title-group">
               <h2>Lectures Management</h2>
-              <p>Configure the 9 primary course modules and their 7 dedicated resources.</p>
+              <p id="lecturesViewSubtitle">Configure all primary course modules and their 7 dedicated resources.</p>
             </div>
+            <button class="btn btn-primary btn-sm" type="button" onclick="adminApp.openAddLectureModal()" style="display:inline-flex; align-items:center; gap:0.45rem; padding:0.5rem 1rem; font-weight:700;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Add New Lecture</span>
+            </button>
           </div>
           <div class="table-responsive">
             <table class="admin-table">

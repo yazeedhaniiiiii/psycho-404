@@ -181,6 +181,174 @@
     if (result.error) throw result.error;
   }
 
+  async function createLecture(payload) {
+    const num = Number.parseInt(payload.number, 10);
+    if (isNaN(num) || num < 1 || num > 99) {
+      throw new Error("Lecture number must be a valid number between 1 and 99.");
+    }
+    const title = String(payload.title || "").trim();
+    if (!title) {
+      throw new Error("Lecture title is required.");
+    }
+    const badge = String(payload.badge || `Lecture ${String(num).padStart(2, "0")}`).trim();
+    const itemNumber = String(num).padStart(2, "0");
+
+    // 1. Insert into lectures table
+    const { data: lectureData, error: lectureError } = await client
+      .from("lectures")
+      .upsert({
+        lecture_number: num,
+        title: title,
+        badge: badge,
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      }, { onConflict: "lecture_number" })
+      .select("id")
+      .single();
+
+    if (lectureError) throw lectureError;
+    const lectureId = lectureData.id;
+
+    // 2. Insert the 7 dedicated resources into lecture_resources
+    const defaultResources = [
+      { resource_key: "ppt", name: "PowerPoint", resource_type: "powerpoint", placeholder: "Telegram PowerPoint Slides", sort_order: 1 },
+      { resource_key: "doctors", name: "Doctors' Explanations", resource_type: "doctors", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]", sort_order: 2 },
+      { resource_key: "mindmaps", name: "Mind Maps", resource_type: "mindmaps", placeholder: "NotebookLM Mind Maps", sort_order: 3 },
+      { resource_key: "flashcards", name: "Flashcards", resource_type: "flashcards", placeholder: "NotebookLM Flashcards", sort_order: 4 },
+      { resource_key: "quizzes", name: "Quizzes", resource_type: "quizzes", placeholder: "NotebookLM Quizzes", sort_order: 5 },
+      { resource_key: "transcription", name: "Handwritten Transcription", resource_type: "transcription", placeholder: "Handwritten Transcription", sort_order: 6 },
+      { resource_key: "notes", name: "Notes", resource_type: "notes", placeholder: "Telegram Notes", sort_order: 7 }
+    ];
+
+    const resRows = defaultResources.map((res) => ({
+      lecture_id: lectureId,
+      resource_key: res.resource_key,
+      name: res.name,
+      resource_type: res.resource_type,
+      url: (payload.resources && payload.resources[res.resource_key]) || "",
+      description: "",
+      format: "",
+      placeholder: res.placeholder,
+      thumbnail_url: "",
+      links: [],
+      sort_order: res.sort_order,
+      is_published: true,
+      updated_at: new Date().toISOString()
+    }));
+
+    const { error: resError } = await client
+      .from("lecture_resources")
+      .upsert(resRows, { onConflict: "lecture_id,resource_key" });
+    if (resError) throw resError;
+
+    // 3. Insert matching slots in category_items (Notes, Reports, Flashcards, Mindmaps, Quick Videos)
+    const categoryRows = [
+      {
+        category_id: "cat-notes",
+        subsection_id: null,
+        lecture_id: lectureId,
+        item_number: itemNumber,
+        title: title,
+        display_title: "",
+        description: `Notes for ${title}`,
+        resource_type: "notes",
+        url: (payload.resources && payload.resources.notes) || "",
+        thumbnail_url: "",
+        links: [],
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      },
+      {
+        category_id: "cat-reports",
+        subsection_id: null,
+        lecture_id: lectureId,
+        item_number: itemNumber,
+        title: title,
+        display_title: "",
+        description: `HTML report for ${title}`,
+        resource_type: "reports",
+        url: "",
+        thumbnail_url: "",
+        links: [],
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      },
+      {
+        category_id: "cat-flashcards-mindmaps",
+        subsection_id: "sub-mindmaps",
+        lecture_id: lectureId,
+        item_number: itemNumber,
+        title: title,
+        display_title: "",
+        description: `Mind Maps for ${title}`,
+        resource_type: "mindmaps",
+        url: (payload.resources && payload.resources.mindmaps) || "",
+        thumbnail_url: "",
+        links: [],
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      },
+      {
+        category_id: "cat-flashcards-mindmaps",
+        subsection_id: "sub-flashcards",
+        lecture_id: lectureId,
+        item_number: itemNumber,
+        title: title,
+        display_title: "",
+        description: `Flashcards for ${title}`,
+        resource_type: "flashcards",
+        url: (payload.resources && payload.resources.flashcards) || "",
+        thumbnail_url: "",
+        links: [],
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      },
+      {
+        category_id: "cat-quickvids",
+        subsection_id: null,
+        lecture_id: lectureId,
+        item_number: itemNumber,
+        title: title,
+        display_title: "",
+        description: `Quick Video for ${title}`,
+        resource_type: "quickvids",
+        url: "",
+        thumbnail_url: "",
+        links: [],
+        sort_order: num,
+        is_published: true,
+        updated_at: new Date().toISOString()
+      }
+    ];
+
+    const { error: catError } = await client
+      .from("category_items")
+      .upsert(categoryRows, { onConflict: "category_id,subsection_id,item_number" });
+    if (catError) throw catError;
+
+    return { id: lectureId, number: itemNumber, title };
+  }
+
+  async function deleteLecture(lectureId, lectureNumber) {
+    if (!lectureId) throw new Error("Lecture ID is required.");
+    const numStr = String(lectureNumber).padStart(2, "0");
+
+    // 1. Delete matching category_items by lecture_id and item_number
+    await client.from("category_items").delete().eq("lecture_id", lectureId);
+    await client.from("category_items").delete().eq("item_number", numStr);
+
+    // 2. Delete lecture (foreign key cascades to lecture_resources)
+    const { error } = await client.from("lectures").delete().eq("id", lectureId);
+    if (error) throw error;
+
+    return { success: true };
+  }
+
   async function saveCategoryItem(item, categoryId) {
     const number = Number.parseInt(item.number, 10);
     const found = await client.from("lectures").select("id").eq("lecture_number", number).maybeSingle();
@@ -276,6 +444,7 @@
 
   window.PSYCHO404_DB = {
     client, loadCourseData, loadAdminData, saveLecture,
+    createLecture, deleteLecture,
     saveCategoryItem, uploadLectureReport, saveFreePart, saveProfile,
     async signInAdmin(email, password) {
       const result = await client.auth.signInWithPassword({ email, password });

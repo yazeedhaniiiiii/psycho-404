@@ -61,7 +61,11 @@ const COURSE_DATA = {
         { number: "06", title: "Personality", description: "Telegram Notes - Click to open", type: "notes", url: "https://t.me/psycho404public/145" },
         { number: "07", title: "Stress", description: "[Notes placeholder - Link coming soon]", type: "notes", url: "" },
         { number: "08", title: "Attention", description: "Telegram Notes - Click to open", type: "notes", url: "https://t.me/psycho404public/175" },
-        { number: "09", title: "Perception", description: "Telegram Notes - Click to open", type: "notes", url: "https://t.me/psycho404public/180" }
+        { number: "09", title: "Perception", description: "Telegram Notes - Click to open", type: "notes", url: "https://t.me/psycho404public/180" },
+        { number: "10", title: "Sensory Deprivation", description: "Telegram Notes - Click to open", type: "notes", url: "" },
+        { number: "11", title: "Doctor Patient Relationship", description: "Telegram Notes - Click to open", type: "notes", url: "" },
+        { number: "12", title: "Memory", description: "Telegram Notes - Click to open", type: "notes", url: "" },
+        { number: "13", title: "Frustration and Defense Mechanisms", description: "Telegram Notes - Click to open", type: "notes", url: "" }
       ]
     },
     {
@@ -79,7 +83,11 @@ const COURSE_DATA = {
         { number: "06", title: "Personality", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
         { number: "07", title: "Stress", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
         { number: "08", title: "Attention", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
-        { number: "09", title: "Perception", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" }
+        { number: "09", title: "Perception", description: "[Reports placeholder – Click to edit or add link]", type: "reports", url: "" },
+        { number: "10", title: "Sensory Deprivation", description: "HTML report for Sensory Deprivation", type: "reports", url: "" },
+        { number: "11", title: "Doctor Patient Relationship", description: "HTML report for Doctor Patient Relationship", type: "reports", url: "" },
+        { number: "12", title: "Memory", description: "HTML report for Memory", type: "reports", url: "" },
+        { number: "13", title: "Frustration and Defense Mechanisms", description: "HTML report for Frustration and Defense Mechanisms", type: "reports", url: "" }
       ]
     },
     {
@@ -104,7 +112,11 @@ const COURSE_DATA = {
             { number: "06", title: "Personality", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "https://notebooklm.link.google/8dxuXAdw9laO" },
             { number: "07", title: "Stress", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "https://notebooklm.link.google/KMe0Z9Xo1q5F" },
             { number: "08", title: "Attention", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "https://notebooklm.link.google/KDdrubLZqDgb" },
-            { number: "09", title: "Perception", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "https://notebooklm.link.google/G3XjTzGvj0fn" }
+            { number: "09", title: "Perception", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "https://notebooklm.link.google/G3XjTzGvj0fn" },
+            { number: "10", title: "Sensory Deprivation", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "" },
+            { number: "11", title: "Doctor Patient Relationship", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "" },
+            { number: "12", title: "Memory", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "" },
+            { number: "13", title: "Frustration and Defense Mechanisms", description: "NotebookLM Mind Maps - Click to open", type: "mindmaps", url: "" }
           ]
         },
         {
@@ -140,7 +152,11 @@ const COURSE_DATA = {
             { number: "06", title: "Personality", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "https://notebooklm.link.google/xBRPFrGNPpcd" },
             { number: "07", title: "Stress", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "https://notebooklm.link.google/jyiXHNYNe2n0" },
             { number: "08", title: "Attention", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "https://notebooklm.link.google/DaMBZKeVxJ1Y" },
-            { number: "09", title: "Perception", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "https://notebooklm.link.google/BHWVj7Q3DEUu" }
+            { number: "09", title: "Perception", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "https://notebooklm.link.google/BHWVj7Q3DEUu" },
+            { number: "10", title: "Sensory Deprivation", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "" },
+            { number: "11", title: "Doctor Patient Relationship", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "" },
+            { number: "12", title: "Memory", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "" },
+            { number: "13", title: "Frustration and Defense Mechanisms", description: "NotebookLM Flashcards - Click to open", type: "flashcards", url: "" }
           ]
         }
       ]
@@ -188,7 +204,11 @@ const COURSE_DATA = {
         },
         { number: "07", title: "Stress", description: "[Quick Vids placeholder – Click to edit]", type: "quickvids", url: "" },
         { number: "08", title: "Attention", description: "[Quick Vids placeholder – Click to edit]", type: "quickvids", url: "" },
-        { number: "09", title: "Perception", description: "[Quick Vids placeholder – Click to edit]", type: "quickvids", url: "" }
+        { number: "09", title: "Perception", description: "[Quick Vids placeholder – Click to edit]", type: "quickvids", url: "" },
+        { number: "10", title: "Sensory Deprivation", description: "High-yield video slot not yet published", type: "quickvids", url: "" },
+        { number: "11", title: "Doctor Patient Relationship", description: "High-yield video slot not yet published", type: "quickvids", url: "" },
+        { number: "12", title: "Memory", description: "High-yield video slot not yet published", type: "quickvids", url: "" },
+        { number: "13", title: "Frustration and Defense Mechanisms", description: "High-yield video slot not yet published", type: "quickvids", url: "" }
       ]
     }
   ],
@@ -433,6 +453,70 @@ const COURSE_DATA = {
         { id: "quizzes", name: "Quizzes", type: "quizzes", url: "https://notebooklm.link.google/lZ54aZ9Imdp0", placeholder: "NotebookLM Quizzes" },
         { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "https://t.me/psycho404public/177", placeholder: "Telegram Handwritten Transcription" },
         { id: "notes", name: "Notes", type: "notes", url: "https://t.me/psycho404public/180", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-10",
+      number: "10",
+      title: "Sensory Deprivation",
+      slug: "sensory-deprivation",
+      badge: "Module 10",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-11",
+      number: "11",
+      title: "Doctor Patient Relationship",
+      slug: "doctor-patient-relationship",
+      badge: "Module 11",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-12",
+      number: "12",
+      title: "Memory",
+      slug: "memory",
+      badge: "Module 12",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-13",
+      number: "13",
+      title: "Frustration and Defense Mechanisms",
+      slug: "frustration-and-defense-mechanisms",
+      badge: "Module 13",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", placeholder: "Telegram Notes" }
       ]
     }
   ]

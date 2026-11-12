@@ -223,6 +223,74 @@ const ADMIN_REAL_DATA = {
         { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "https://t.me/psycho404public/177", format: "PDF Notes", placeholder: "Telegram Handwritten Transcription" },
         { id: "notes", name: "Notes", type: "notes", url: "https://t.me/psycho404public/180", format: "Summary PDF", placeholder: "Telegram Notes" }
       ]
+    },
+    {
+      id: "lecture-10",
+      number: "10",
+      title: "Sensory Deprivation",
+      badge: "Module 10",
+      status: "Published",
+      lastUpdated: "Active",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", format: "PPTX / Slides", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", format: "Audio / Video", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", format: "NotebookLM Map", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", format: "Interactive Decks", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", format: "Online Quiz", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", format: "PDF Notes", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", format: "Summary PDF", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-11",
+      number: "11",
+      title: "Doctor Patient Relationship",
+      badge: "Module 11",
+      status: "Published",
+      lastUpdated: "Active",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", format: "PPTX / Slides", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", format: "Audio / Video", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", format: "NotebookLM Map", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", format: "Interactive Decks", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", format: "Online Quiz", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", format: "PDF Notes", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", format: "Summary PDF", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-12",
+      number: "12",
+      title: "Memory",
+      badge: "Module 12",
+      status: "Published",
+      lastUpdated: "Active",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", format: "PPTX / Slides", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", format: "Audio / Video", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", format: "NotebookLM Map", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", format: "Interactive Decks", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", format: "Online Quiz", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", format: "PDF Notes", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", format: "Summary PDF", placeholder: "Telegram Notes" }
+      ]
+    },
+    {
+      id: "lecture-13",
+      number: "13",
+      title: "Frustration and Defense Mechanisms",
+      badge: "Module 13",
+      status: "Published",
+      lastUpdated: "Active",
+      resources: [
+        { id: "ppt", name: "PowerPoint", type: "powerpoint", url: "", format: "PPTX / Slides", placeholder: "Telegram PowerPoint Slides" },
+        { id: "doctors", name: "Doctors' Explanations", type: "doctors", url: "", format: "Audio / Video", placeholder: "[Doctors' Explanations placeholder - Add audio/video/doc link]" },
+        { id: "mindmaps", name: "Mind Maps", type: "mindmaps", url: "", format: "NotebookLM Map", placeholder: "NotebookLM Mind Maps" },
+        { id: "flashcards", name: "Flashcards", type: "flashcards", url: "", format: "Interactive Decks", placeholder: "NotebookLM Flashcards" },
+        { id: "quizzes", name: "Quizzes", type: "quizzes", url: "", format: "Online Quiz", placeholder: "NotebookLM Quizzes" },
+        { id: "transcription", name: "Handwritten Transcription", type: "transcription", url: "", format: "PDF Notes", placeholder: "Telegram Handwritten Transcription" },
+        { id: "notes", name: "Notes", type: "notes", url: "", format: "Summary PDF", placeholder: "Telegram Notes" }
+      ]
     }
   ],
 
@@ -353,10 +421,50 @@ const ADMIN_REAL_DATA = {
       thumbnail: "",
       videoUrl: "",
       status: "empty"
+    },
+    {
+      id: "qv-10",
+      number: "10",
+      topic: "Sensory Deprivation",
+      title: "Sensory Deprivation Breakdown",
+      description: "High-yield video slot not yet published",
+      thumbnail: "",
+      videoUrl: "",
+      status: "empty"
+    },
+    {
+      id: "qv-11",
+      number: "11",
+      topic: "Doctor Patient Relationship",
+      title: "Doctor-Patient Communication",
+      description: "High-yield video slot not yet published",
+      thumbnail: "",
+      videoUrl: "",
+      status: "empty"
+    },
+    {
+      id: "qv-12",
+      number: "12",
+      topic: "Memory",
+      title: "Memory & Retention Systems",
+      description: "High-yield video slot not yet published",
+      thumbnail: "",
+      videoUrl: "",
+      status: "empty"
+    },
+    {
+      id: "qv-13",
+      number: "13",
+      topic: "Frustration and Defense Mechanisms",
+      title: "Defense Mechanisms in Action",
+      description: "High-yield video slot not yet published",
+      thumbnail: "",
+      videoUrl: "",
+      status: "empty"
     }
   ],
 
-  // Reports (9 Modules corresponding to cat-reports in course-data.js, all starting as empty)
+  // Reports (Modules corresponding to cat-reports in course-data.js, all starting as empty)
   reports: [
     { number: "01", lectureTitle: "BIOLOGICAL BASES OF BEHAVIOUR", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
     { number: "02", lectureTitle: "Developmental Psychology", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
@@ -366,7 +474,11 @@ const ADMIN_REAL_DATA = {
     { number: "06", lectureTitle: "Personality", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
     { number: "07", lectureTitle: "Stress", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
     { number: "08", lectureTitle: "Attention", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
-    { number: "09", lectureTitle: "Perception", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" }
+    { number: "09", lectureTitle: "Perception", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
+    { number: "10", lectureTitle: "Sensory Deprivation", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
+    { number: "11", lectureTitle: "Doctor Patient Relationship", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
+    { number: "12", lectureTitle: "Memory", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" },
+    { number: "13", lectureTitle: "Frustration and Defense Mechanisms", badge: "By Doctors words", description: "Reports placeholder – Click to edit or add link", url: "", status: "empty" }
   ],
 
   // Real Media Library (Physical image assets verified on disk)
@@ -437,7 +549,11 @@ const ADMIN_REAL_DATA = {
     { module: "06. Personality", ppt: true, doctors: false, mindmaps: true, flashcards: "1 Deck", quizzes: true, transcription: true, notes: true, quickVid: true },
     { module: "07. Stress", ppt: true, doctors: false, mindmaps: true, flashcards: "1 Deck", quizzes: true, transcription: true, notes: false, quickVid: false },
     { module: "08. Attention", ppt: true, doctors: false, mindmaps: true, flashcards: "1 Deck", quizzes: true, transcription: true, notes: true, quickVid: false },
-    { module: "09. Perception", ppt: true, doctors: false, mindmaps: true, flashcards: "1 Deck", quizzes: true, transcription: true, notes: true, quickVid: false }
+    { module: "09. Perception", ppt: true, doctors: false, mindmaps: true, flashcards: "1 Deck", quizzes: true, transcription: true, notes: true, quickVid: false },
+    { module: "10. Sensory Deprivation", ppt: false, doctors: false, mindmaps: false, flashcards: "0 Decks", quizzes: false, transcription: false, notes: false, quickVid: false },
+    { module: "11. Doctor Patient Rel", ppt: false, doctors: false, mindmaps: false, flashcards: "0 Decks", quizzes: false, transcription: false, notes: false, quickVid: false },
+    { module: "12. Memory", ppt: false, doctors: false, mindmaps: false, flashcards: "0 Decks", quizzes: false, transcription: false, notes: false, quickVid: false },
+    { module: "13. Frustration & Def", ppt: false, doctors: false, mindmaps: false, flashcards: "0 Decks", quizzes: false, transcription: false, notes: false, quickVid: false }
   ],
 
   // System Settings

@@ -1266,7 +1266,9 @@ button {
   cursor: pointer;
   width: 100%;
   min-width: 0;
+  max-width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .cat-item-deck-pill:hover {
@@ -1288,10 +1290,13 @@ button {
 
 .cat-item-deck-pill .pill-text {
   flex: 1;
+  min-width: 0;
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  word-break: normal;
 }
 
 .cat-item-deck-pill .pill-icon {
@@ -2191,6 +2196,9 @@ button {
   border: 1px solid rgba(101, 217, 255, 0.2);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .modal-link-item:hover {
@@ -2214,6 +2222,7 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .modal-link-url {
@@ -2223,6 +2232,8 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
+  min-width: 0;
 }
 
 .modal-link-actions {
@@ -2634,6 +2645,50 @@ button {
   .modal-container {
     padding: 1.5rem 1.25rem;
     max-width: 92vw;
+  }
+
+  /* Multi-link items & Deck pills in Modals (Responsive on Tablets & Mobile) */
+  .modal-link-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modal-link-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .modal-link-title {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .modal-link-url {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .modal-link-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-link-open {
+    flex: 1;
+    justify-content: center;
+    min-height: 38px;
+  }
+
+  .btn-link-copy {
+    min-height: 38px;
+    min-width: 38px;
   }
 
   /* Footer */

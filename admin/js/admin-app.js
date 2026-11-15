@@ -401,7 +401,7 @@ class AdminApp {
           <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.35rem; padding-left:0.5rem; border-left:2px solid var(--accent-primary);">
             <div style="font-size:0.75rem; color:var(--accent-secondary); font-weight:600;">Sub-Links (${res.links.length}):</div>
             ${res.links.map((link, lIdx) => `
-              <div style="display:grid; grid-template-columns:1fr 2fr; gap:0.4rem;">
+              <div class="modal-sublink-grid">
                 <input type="text" class="form-control" id="res-${rIdx}-link-title-${lIdx}" value="${link.title || ''}" placeholder="Deck/Part Title" style="padding-left:0.6rem; font-size:0.78rem;">
                 <input type="text" class="form-control" id="res-${rIdx}-link-url-${lIdx}" value="${link.url || ''}" placeholder="URL Destination" style="padding-left:0.6rem; font-size:0.78rem; font-family:var(--font-family-mono);">
               </div>
@@ -739,6 +739,18 @@ class AdminApp {
     this.openModal();
   }
 
+  formatUrlDisplay(url) {
+    if (!url) return '';
+    try {
+      const parsed = new URL(url);
+      const host = parsed.hostname.replace(/^www\./, '');
+      const path = parsed.pathname.length > 18 ? parsed.pathname.slice(0, 18) + '…' : parsed.pathname;
+      return `${host}${path}`;
+    } catch {
+      return url.length > 28 ? url.slice(0, 25) + '…' : url;
+    }
+  }
+
   // ------------------------------------------------------------------------
   // Section 5: Flashcards & Mind Maps Render
   // ------------------------------------------------------------------------
@@ -750,23 +762,89 @@ class AdminApp {
       const mm = lec.resources.find(r => r.id === 'mindmaps') || {};
       const fc = lec.resources.find(r => r.id === 'flashcards') || {};
 
-      let detailsHtml = '';
-      if (mm.url) {
-        detailsHtml += `<div><span style="color:var(--accent-secondary); font-weight:600;">Mind Map:</span> <a href="${mm.url}" target="_blank" style="color:var(--text-muted); font-family:var(--font-family-mono); font-size:0.75rem;">${mm.url}</a></div>`;
+      const hasMm = Boolean(mm.url && mm.url.trim() !== '');
+      const hasFcLinks = Boolean(fc.links && fc.links.length > 0);
+      const hasFcUrl = Boolean(!hasFcLinks && fc.url && fc.url.trim() !== '');
+      const hasAny = hasMm || hasFcLinks || hasFcUrl;
+
+      let mmContent = '';
+      if (hasMm) {
+        mmContent = `
+          <div class="hub-link-item">
+            <span class="hub-link-type type-mindmap">Mind Map</span>
+            <a href="${this.escapeHtml(mm.url)}" target="_blank" rel="noopener noreferrer" class="hub-link-anchor" title="${this.escapeHtml(mm.url)}">
+              <span class="hub-link-text">${this.formatUrlDisplay(mm.url)}</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        `;
+      } else {
+        mmContent = `
+          <div class="hub-link-item is-empty">
+            <span class="hub-link-type type-mindmap">Mind Map</span>
+            <span class="hub-link-empty-tag">Empty / Not Added</span>
+          </div>
+        `;
       }
-      if (fc.links && fc.links.length > 0) {
-        detailsHtml += `<div style="margin-top:0.25rem;"><span style="color:var(--status-success); font-weight:600;">Flashcards (${fc.links.length} Decks):</span> ${fc.links.map(l => `<a href="${l.url}" target="_blank" class="badge badge-primary" style="margin-left:0.25rem; font-size:0.7rem;">${l.title}</a>`).join('')}</div>`;
-      } else if (fc.url) {
-        detailsHtml += `<div style="margin-top:0.25rem;"><span style="color:var(--status-success); font-weight:600;">Flashcards:</span> <a href="${fc.url}" target="_blank" style="color:var(--text-muted); font-family:var(--font-family-mono); font-size:0.75rem;">${fc.url}</a></div>`;
+
+      let fcContent = '';
+      if (hasFcLinks) {
+        fcContent = `
+          <div class="hub-link-item">
+            <span class="hub-link-type type-flashcard">Flashcards (${fc.links.length} Decks)</span>
+            <div class="hub-decks-list">
+              ${fc.links.map(l => `
+                <a href="${this.escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer" class="hub-deck-badge" title="${this.escapeHtml(l.title)}: ${this.escapeHtml(l.url)}">
+                  <span class="badge-dot-green"></span>
+                  <span class="badge-title-text">${this.escapeHtml(l.title)}</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else if (hasFcUrl) {
+        fcContent = `
+          <div class="hub-link-item">
+            <span class="hub-link-type type-flashcard">Flashcards</span>
+            <a href="${this.escapeHtml(fc.url)}" target="_blank" rel="noopener noreferrer" class="hub-link-anchor" title="${this.escapeHtml(fc.url)}">
+              <span class="hub-link-text">${this.formatUrlDisplay(fc.url)}</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        `;
+      } else {
+        fcContent = `
+          <div class="hub-link-item is-empty">
+            <span class="hub-link-type type-flashcard">Flashcards</span>
+            <span class="hub-link-empty-tag">Empty / Not Added</span>
+          </div>
+        `;
       }
 
       return `
         <tr>
-          <td><strong style="color:var(--text-primary);">${lec.number}. ${lec.title}</strong></td>
-          <td><span class="badge badge-success">Mind Maps &amp; Active Recall</span></td>
-          <td style="max-width:380px;">${detailsHtml}</td>
           <td>
-            <button class="btn btn-secondary btn-sm" onclick="adminApp.openEditLectureModal(${idx})">Manage Decks</button>
+            <div class="lecture-row-title">
+              <strong style="color:var(--text-primary);">${lec.number}. ${this.escapeHtml(lec.title)}</strong>
+            </div>
+            <span style="font-size:0.75rem; color:var(--accent-secondary);">${this.escapeHtml(lec.badge)}</span>
+          </td>
+          <td>
+            <span class="badge ${hasAny ? 'badge-success' : 'badge-primary'}">
+              ${hasAny ? 'Configured' : 'Pending'}
+            </span>
+          </td>
+          <td class="hub-links-cell">
+            <div class="hub-links-wrapper">
+              ${mmContent}
+              ${fcContent}
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-secondary btn-sm" onclick="adminApp.openEditLectureModal(${idx})" style="white-space:nowrap;">
+              Manage Decks
+            </button>
           </td>
         </tr>
       `;

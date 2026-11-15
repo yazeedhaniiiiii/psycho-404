@@ -386,6 +386,17 @@
                         .join('')}
                     </div>
                   `;
+                } else if (hasUrl) {
+                  const pillLabel = sub.id === 'sub-mindmaps' ? 'NotebookLM Mind Map' : 'NotebookLM Deck';
+                  middleContent = `
+                    <div class="cat-item-decks">
+                      <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="cat-item-deck-pill" onclick="event.stopPropagation()" title="${item.title} — ${pillLabel}">
+                        <span class="pill-dot"></span>
+                        <span class="pill-text">${pillLabel}</span>
+                        <span class="pill-icon">${ICONS.externalLink}</span>
+                      </a>
+                    </div>
+                  `;
                 } else {
                   const thumbHtml = item.thumbnail
                     ? `

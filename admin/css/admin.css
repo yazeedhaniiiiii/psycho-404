@@ -917,6 +917,160 @@ input:focus, select:focus, textarea:focus {
   border-bottom: 1px solid rgba(101, 217, 255, 0.08);
   color: #E2E8F0;
   vertical-align: middle;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Flashcards & Mind Maps Hub Responsive Link Rows */
+.hub-links-cell {
+  max-width: 440px;
+  min-width: 240px;
+}
+
+.hub-links-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-link-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hub-link-type.type-mindmap {
+  background: rgba(40, 123, 255, 0.15);
+  color: #65d9ff;
+  border: 1px solid rgba(101, 217, 255, 0.3);
+}
+
+.hub-link-type.type-flashcard {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.hub-link-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.6rem;
+  background: rgba(16, 24, 39, 0.85);
+  border: 1px solid rgba(101, 217, 255, 0.25);
+  border-radius: 5px;
+  color: #E2E8F0;
+  font-family: var(--font-family-mono);
+  font-size: 0.74rem;
+  text-decoration: none;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.hub-link-anchor:hover {
+  background: rgba(40, 123, 255, 0.25);
+  border-color: var(--accent-secondary);
+  color: #FFFFFF;
+}
+
+.hub-link-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+  min-width: 0;
+}
+
+.hub-decks-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.hub-deck-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(40, 123, 255, 0.18);
+  border: 1px solid rgba(101, 217, 255, 0.35);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.hub-deck-badge:hover {
+  background: var(--accent-primary);
+  border-color: #FFFFFF;
+}
+
+.badge-dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(52, 211, 153, 0.5);
+}
+
+.badge-title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+  min-width: 0;
+}
+
+.hub-link-empty-tag {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 0.15rem 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.modal-sublink-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.4rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .modal-sublink-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .admin-table tr:last-child td {
@@ -1257,5 +1411,20 @@ input:focus, select:focus, textarea:focus {
     right: 1rem;
     bottom: 1rem;
     align-items: center;
+  }
+  .hub-links-cell {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .hub-link-text {
+    max-width: 140px;
+  }
+  .badge-title-text {
+    max-width: 130px;
+  }
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem 0.65rem;
+    font-size: 0.8rem;
   }
 }

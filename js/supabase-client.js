@@ -40,17 +40,49 @@
       status: row.is_published ? "Published" : "Draft",
       resources: resourcesByLecture.get(row.id) || []
     }));
-    const mappedItems = items.map((row) => ({
-      dbId: row.id, subsectionId: row.subsection_id, lectureId: row.lecture_id,
-      number: row.item_number,
-      lectureNumber: row.lecture_id ? String(numberById.get(row.lecture_id) || "").padStart(2, "0") : "",
-      title: row.title,
-      description: row.display_title && row.description
-        ? row.display_title + " • " + row.description
-        : (row.display_title || row.description),
-      type: row.resource_type,
-      url: row.url, thumbnail: row.thumbnail_url, links: row.links || []
-    }));
+    const mappedItems = items.map((row) => {
+      let resolvedUrl = row.url;
+      let resolvedLinks = Array.isArray(row.links) ? row.links : [];
+
+      // Automatically fallback to lecture_resources if category_items url/links is blank
+      if (row.lecture_id) {
+        const lectureResList = resourcesByLecture.get(row.lecture_id) || [];
+        let targetRes = null;
+        if (row.subsection_id === "sub-mindmaps") {
+          targetRes = lectureResList.find((r) => r.id === "mindmaps" || r.type === "mindmaps");
+        } else if (row.subsection_id === "sub-flashcards") {
+          targetRes = lectureResList.find((r) => r.id === "flashcards" || r.type === "flashcards");
+        } else if (row.category_id === "cat-notes" || row.resource_type === "notes") {
+          targetRes = lectureResList.find((r) => r.id === "notes" || r.type === "notes")
+            || lectureResList.find((r) => r.id === "transcription");
+        } else if (row.category_id === "cat-reports" || row.resource_type === "reports") {
+          targetRes = lectureResList.find((r) => r.id === "doctors" || r.type === "doctors");
+        } else {
+          targetRes = lectureResList.find((r) => r.id === row.resource_type || r.type === row.resource_type);
+        }
+
+        if (targetRes) {
+          if ((!resolvedUrl || resolvedUrl.trim() === "") && targetRes.url) {
+            resolvedUrl = targetRes.url;
+          }
+          if ((!resolvedLinks || resolvedLinks.length === 0) && targetRes.links && targetRes.links.length > 0) {
+            resolvedLinks = targetRes.links;
+          }
+        }
+      }
+
+      return {
+        dbId: row.id, subsectionId: row.subsection_id, lectureId: row.lecture_id,
+        number: row.item_number,
+        lectureNumber: row.lecture_id ? String(numberById.get(row.lecture_id) || "").padStart(2, "0") : "",
+        title: row.title,
+        description: row.display_title && row.description
+          ? row.display_title + " • " + row.description
+          : (row.display_title || row.description),
+        type: row.resource_type,
+        url: resolvedUrl, thumbnail: row.thumbnail_url, links: resolvedLinks
+      };
+    });
     const navigationCategories = categories.map((row) => {
       const subs = subsections.filter((sub) => sub.category_id === row.id).map((sub) => ({
         id: sub.id, title: sub.title, badge: sub.badge, icon: sub.icon,
@@ -179,6 +211,42 @@
       onConflict: "lecture_id,resource_key"
     });
     if (result.error) throw result.error;
+
+    // Automatically synchronize category_items for Flashcards, Mind Maps, and Notes
+    try {
+      const mindmapsRes = lecture.resources.find((r) => r.id === "mindmaps" || r.type === "mindmaps");
+      const flashcardsRes = lecture.resources.find((r) => r.id === "flashcards" || r.type === "flashcards");
+      const notesRes = lecture.resources.find((r) => r.id === "notes" || r.type === "notes");
+      const transcriptionRes = lecture.resources.find((r) => r.id === "transcription");
+
+      if (mindmapsRes) {
+        await client.from("category_items").update({
+          url: mindmapsRes.url || "",
+          links: mindmapsRes.links || [],
+          updated_at: new Date().toISOString()
+        }).eq("lecture_id", data.id).eq("subsection_id", "sub-mindmaps");
+      }
+
+      if (flashcardsRes) {
+        await client.from("category_items").update({
+          url: flashcardsRes.url || "",
+          links: flashcardsRes.links || [],
+          updated_at: new Date().toISOString()
+        }).eq("lecture_id", data.id).eq("subsection_id", "sub-flashcards");
+      }
+
+      const effectiveNotesUrl = notesRes?.url || transcriptionRes?.url || "";
+      const effectiveNotesLinks = (notesRes?.links && notesRes.links.length > 0) ? notesRes.links : (transcriptionRes?.links || []);
+      if (effectiveNotesUrl || (effectiveNotesLinks && effectiveNotesLinks.length > 0)) {
+        await client.from("category_items").update({
+          url: effectiveNotesUrl,
+          links: effectiveNotesLinks,
+          updated_at: new Date().toISOString()
+        }).eq("lecture_id", data.id).eq("category_id", "cat-notes");
+      }
+    } catch (syncErr) {
+      console.warn("Failed to synchronize category_items:", syncErr);
+    }
   }
 
   async function createLecture(payload) {
